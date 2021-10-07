@@ -2,12 +2,25 @@ package gamelog.main.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class Games {
+	
+	@ManyToOne
+	@JoinColumn(name="userid")
 	private int userid;
+	
+	@Column
 	private String gamename;
+	@Column
 	private String gamesystem;
+	@Column
 	private double playtime;
+	@Column
 	private Date dateadded;
+	@Column
 	private Date datechanged;
 
 	public Games() {

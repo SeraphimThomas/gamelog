@@ -1,5 +1,15 @@
 package gamelog.main.dao;
 
-public class GamesDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import gamelog.main.model.Games;
+
+@Repository
+public interface GamesDAO extends JpaRepository<Games, Integer>{
+
+	@Query("SELECT g FROM Games g where g.games = ?1")
+	Games findByGame(String game);
 
 }
