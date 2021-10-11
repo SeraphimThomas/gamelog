@@ -9,7 +9,7 @@ import gamelog.main.model.Games;
 @Repository
 public interface GamesDAO extends JpaRepository<Games, Integer>{
 
-	@Query("SELECT g FROM Games g where g.games = ?1")
-	Games findByGame(String game);
+//	@Query("SELECT g FROM Games g where g.games = ?1")
+//	Games findByGame(String game);
 
 }

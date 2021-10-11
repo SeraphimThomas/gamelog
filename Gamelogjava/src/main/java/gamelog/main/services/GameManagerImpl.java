@@ -3,10 +3,12 @@ package gamelog.main.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import gamelog.main.dao.GamesDAO;
 import gamelog.main.model.Games;
 
+@Service
 public class GameManagerImpl implements GamesManager{
 	
 	@Autowired

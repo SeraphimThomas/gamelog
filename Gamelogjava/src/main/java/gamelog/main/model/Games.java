@@ -3,14 +3,24 @@ package gamelog.main.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Entity
 public class Games {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="gameid")
+	private int gameid;
+
 	@ManyToOne
 	@JoinColumn(name="userid")
-	private int userid;
+	private User user;
 	
 	@Column
 	private String gamename;
@@ -27,37 +37,19 @@ public class Games {
 		super();
 	}
 
-	public Games(int userid) {
-		super();
-		this.userid = userid;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
-	public Games(int userid, String gamename, String gamesystem, double playtime, Date datechanged) {
-		super();
-		this.userid = userid;
-		this.gamename = gamename;
-		this.gamesystem = gamesystem;
-		this.playtime = playtime;
-		this.datechanged = datechanged;
+	public int getGameid() {
+		return gameid;
 	}
 
-	public Games(int userid, String gamename, String gamesystem, double playtime, Date dateadded, Date datechanged) {
-		super();
-		this.userid = userid;
-		this.gamename = gamename;
-		this.gamesystem = gamesystem;
-		this.playtime = playtime;
-		this.dateadded = dateadded;
-		this.datechanged = datechanged;
+
+	public void setGameid(int gameid) {
+		this.gameid = gameid;
 	}
 
-	public int getUserid() {
-		return userid;
-	}
-
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
 
 	public String getGamename() {
 		return gamename;

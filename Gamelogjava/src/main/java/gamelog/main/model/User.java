@@ -17,7 +17,7 @@ public class User {
 	@Column
 	private int userid;
 
-	@OneToMany(mappedBy = "userid", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
 	private List<Games> games;
 
 	@Column

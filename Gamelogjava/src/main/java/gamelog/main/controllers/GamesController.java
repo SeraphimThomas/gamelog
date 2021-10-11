@@ -14,21 +14,21 @@ import gamelog.main.model.Games;
 import gamelog.main.services.GamesManager;
 
 @RestController
-@RequestMapping(path="/user")
+@RequestMapping(path="/games")
 public class GamesController {
 	
 	
 	@Autowired
-	private GamesManager games;
+	private GamesManager manager;
 	
 	@GetMapping(path="/{id}", produces = "application/json")
 	public List<Games> findById(@PathVariable int id){
-		return games.findAll(id);
+		return manager.findAll(id);
 	}
 	
 	@PostMapping(consumes="application/json",produces="application/json")
 	public Games create(@RequestBody Games game) {
-		return games.create(games);
+		return manager.create(game);
 	}
 
 }

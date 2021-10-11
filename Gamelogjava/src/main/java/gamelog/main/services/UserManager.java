@@ -6,12 +6,11 @@ import gamelog.main.model.User;
 
 public interface UserManager {
 	
-	User findLogin(User user);
+	User login(User user);
 	
 	User createAccount(User user);
 	
 	List<User> getUsers();
 	
-	User findById(int id);
 
 }
