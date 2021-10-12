@@ -10,8 +10,10 @@ public interface GamesManager {
 	
 	Games findById(int id);
 	
-	List<Games> findAll();
-	
 	List<Games> findByUser();
+
+	List<Games> findAll(int id);
+
+	Games create(GamesManager games);
 	
 }
