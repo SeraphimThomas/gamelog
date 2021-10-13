@@ -13,6 +13,7 @@ public class UserManagerImpl implements UserManager{
 	
 	@Autowired
 	private UserDAO uDao;
+	
 
 	@Override
 	public User login(User user) {
