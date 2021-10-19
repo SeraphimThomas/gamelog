@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { User } from '../models/user';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,18 +13,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  incorrect:boolean =false;
+  loginCred = new FormControl('');
+  incorrect:boolean = false;
+  private cookie_name = "";
+  password = "";
+  username = "";
 
-  constructor(private loginService:LoginService, private router:Router) { }
+  constructor(private loginService:LoginService, private router:Router, private cookie:CookieService) { }
 
   ngOnInit(): void {
-    // var loggedIn:any = localStorage.getItem("id");
-    // if(loggedIn !== null  loggedIn !== undefined){
-    //   this.router.navigate(['home']);
-    // }
+  }
+
+  setCookie(username: string){
+    this.cookie.set('Login', username);
   }
 
 onSubmit(form:NgForm):void{
+  console.log("The username is: " + form);
   let user:User = {username: form.value.username,
                   password: form.value.password};
   this.loginService.login(user).subscribe({
@@ -30,9 +37,9 @@ onSubmit(form:NgForm):void{
       if(data === null){
         this.incorrect=true;
       }else{
-        console.log(JSON.stringify(data));
-        localStorage.setItem("id", String(data.userId));
-          localStorage.setItem("username", String(data.username));
+        // localStorage.setItem("id", String(data.userId));
+          // localStorage.setItem("username", String(data.username));
+          this.cookie.set('Login', String(data.username), 2);
           this.router.navigate(['home']);
       }
     }

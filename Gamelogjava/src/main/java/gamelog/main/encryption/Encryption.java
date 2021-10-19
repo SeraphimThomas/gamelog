@@ -7,6 +7,7 @@ public class Encryption {
 	public static String getHashSHA1 (String password) {
 		try {
 			MessageDigest md = MessageDigest.getInstance("SHA-1");
+			System.out.println(password);
 			md.update(password.getBytes());
 			byte byteData[] = md.digest();
 			StringBuilder sb = new StringBuilder();
