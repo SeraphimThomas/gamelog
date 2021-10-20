@@ -1,22 +1,14 @@
 <div>
-    <!-- <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <h1>Gamer Login</h1>
-    <br>
-    <div>
-        <label for="username">Username</label>
-        <input id="username" type="text" name="username" placeholder="Username" required [(ngModel)]="username">
-    <br>
-        <label for="password">Password</label>
-        <input id="password" type="password" name="password" placeholder="Password" required [(ngModel)]="password">
-    </div> -->
-
-    <form [formGroup]="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <label for="username">Username:</label>
+        <br>
         <input type="text" [formControlName]="'username'"/>
+        <br>
+        <label for="password">Password:</label>
+        <br>
         <input type="password" [formControlName]="'password'"/>
-    </form>
-    </div>
 <br>
-<button type="submit" [disabled]=!f.valid>Sign In</button>
+<button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
         <!--Can work if signup component is created-->
         <!--<a href="/signup">Create a new account</a>-->   
     </form>

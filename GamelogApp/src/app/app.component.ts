@@ -7,11 +7,11 @@ import { CookieService} from 'ngx-cookie-service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'GamelogApp';
+  title = 'Game Log';
   private cookie_name = '';
   private all_cookies: any= '';
 
-constructor(private cookies:CookieService){
+constructor(public cookies:CookieService){
   
 }
 deleteCookie(){
