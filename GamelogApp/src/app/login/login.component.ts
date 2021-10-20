@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
 onSubmit():void{
-  console.log("The username is: " + this.form);
+  console.log("The username is: " + this.form.getRawValue);
   let user:User = {username: this.form.value.username,
                   password: this.form.value.password};
   this.loginService.login(user).subscribe({
