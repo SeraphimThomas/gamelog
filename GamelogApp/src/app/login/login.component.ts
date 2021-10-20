@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { User } from '../models/user';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
@@ -15,12 +15,17 @@ export class LoginComponent implements OnInit {
 
   loginCred = new FormControl('');
   incorrect:boolean = false;
+  form: FormGroup
   private cookie_name = "";
   password = "";
   username = "";
 
-  constructor(private loginService:LoginService, private router:Router, private cookie:CookieService) { }
-
+  constructor(private readonly fb: FormBuilder, private loginService:LoginService, private router:Router, private cookie:CookieService) { 
+    this.form = this.fb.group({
+      username: [],
+      password:[]
+    });
+  }
   ngOnInit(): void {
   }
 
@@ -28,10 +33,10 @@ export class LoginComponent implements OnInit {
     this.cookie.set('Login', username);
   }
 
-onSubmit(form:NgForm):void{
-  console.log("The username is: " + form);
-  let user:User = {username: form.value.username,
-                  password: form.value.password};
+onSubmit():void{
+  console.log("The username is: " + this.form);
+  let user:User = {username: this.form.value.username,
+                  password: this.form.value.password};
   this.loginService.login(user).subscribe({
     next: (data:User)=>{
       if(data === null){

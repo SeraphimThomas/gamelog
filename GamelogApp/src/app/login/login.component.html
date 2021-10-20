@@ -1,5 +1,5 @@
 <div>
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <!-- <form (ngSubmit)="onSubmit(f)" #f="ngForm">
         <h1>Gamer Login</h1>
     <br>
     <div>
@@ -8,6 +8,12 @@
     <br>
         <label for="password">Password</label>
         <input id="password" type="password" name="password" placeholder="Password" required [(ngModel)]="password">
+    </div> -->
+
+    <form [formGroup]="form">
+        <input type="text" [formControlName]="'username'"/>
+        <input type="password" [formControlName]="'password'"/>
+    </form>
     </div>
 <br>
 <button type="submit" [disabled]=!f.valid>Sign In</button>
