@@ -1,10 +1,14 @@
 <div>
-    <div *ngIf="incorrect === false" id="false">
+    <div *ngIf="incorrect === false" id="false" style="text-align: center;">
         <p>Please enter a valid username and password</p>
     </div>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="signUp()">
         <label for="username">Username:</label>
         <br>
+        <div *ngIf="f.password.touched && f.password.invalid"
+        class ="text-danger">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+    </div>
         <input type="text" [formControlName]="'username'"/>
         <br>
         <label for="password">Password:</label>

@@ -10,13 +10,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './signup/signup.component';
+import { AddGameComponent } from './add-game/add-game.component';
+import { TopGamesComponent } from './top-games/top-games.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    AddGameComponent,
+    TopGamesComponent
   ],
   imports: [
     FormsModule,

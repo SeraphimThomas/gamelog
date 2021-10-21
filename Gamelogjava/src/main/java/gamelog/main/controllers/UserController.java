@@ -27,6 +27,7 @@ public class UserController {
 		return new ResponseEntity<>(userMan.login(user),HttpStatus.CREATED);
 	}
 	
+	@CrossOrigin(origins="http://localhost:4200")
 	@PostMapping(path="/create",consumes="application/json", produces="application/json")
 	public ResponseEntity<User> createAccount(@RequestBody User user){
 		user.setPassword(Encryption.getHashSHA1(user.getPassword()));

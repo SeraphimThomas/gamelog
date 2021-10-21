@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CookieService} from 'ngx-cookie-service';
 
 @Component({
@@ -11,11 +12,13 @@ export class AppComponent {
   private cookie_name = '';
   private all_cookies: any= '';
 
-constructor(public cookies:CookieService){
+constructor(public cookies:CookieService,
+            private router:Router){
   
 }
 deleteCookie(){
   this.cookies.delete('Login');
+  this.router.navigate(['login'])
 }
 
 ngOnInit(): void{

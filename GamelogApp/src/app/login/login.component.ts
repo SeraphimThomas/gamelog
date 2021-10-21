@@ -44,7 +44,7 @@ onSubmit():void{
       }else{
         // localStorage.setItem("id", String(data.userId));
           // localStorage.setItem("username", String(data.username));
-          this.cookie.set('Login', String(data.username), 2);
+          this.cookie.set('Login', String(data.username), 0.25);
           this.router.navigate(['home']);
       }
     }
