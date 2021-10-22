@@ -3,20 +3,77 @@
         <p>Please enter a valid username and password</p>
     </div>
     <form [formGroup]="form" (ngSubmit)="signUp()">
-        <label for="username">Username:</label>
+        <label>Username:</label>
         <br>
-        <div *ngIf="f.password.touched && f.password.invalid"
-        class ="text-danger">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-    </div>
         <input type="text" [formControlName]="'username'"/>
         <br>
-        <label for="password">Password:</label>
+        <label>Password:</label>
         <br>
         <input type="password" [formControlName]="'password'"/>
-<br>
+        <br>
+        <label
+            class="col"
+            [ngClass]="form.controls['password'].hasError('required') ||
+            form.controls['password'].hasError('minlength') ? 'text-danger' : 'text-success'">
+            <i class="material-icons">
+                {{ form.controls['password'].hasError('required') 
+                || form.controls['password'].hasError('minlength')
+                ? 'cancel' : 'check_circle'}}
+            </i>
+            Password must be 8 characters.
+        </label>
+        <br>
+        <label
+            class="col"
+            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasNumber') ? 'text-danger' : 'text-success'">
+            <i class="material-icons">
+                {{ form.controls['password'].hasError('required') 
+                || form.controls['password'].hasError('hasNumber')
+                ? 'cancel' : 'check_circle'}}
+            </i>
+            Must have at least 1 number.
+        </label>
+        <br>
+        <label
+            class="col"
+            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasCapitalCase') ? 'text-danger' : 'text-success'">
+            <i class="material-icons">
+                {{ form.controls['password'].hasError('required') 
+                || form.controls['password'].hasError('hasCapitalCase')
+                ? 'cancel' : 'check_circle'}}
+            </i>
+            Must have at least one upper case letter (A-Z).
+        </label>
+        <br>
+        <label
+            class="col"
+            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasSmallCase') ? 'text-danger' : 'text-success'">
+            <i class="material-icons">
+                {{ form.controls['password'].hasError('required') 
+                || form.controls['password'].hasError('hasSmallCase')
+                ? 'cancel' : 'check_circle'}}
+            </i>
+            Must have at least 1 lower case letter (a-z).
+        </label>
+        <br>
+        <!-- <label
+            class="col"
+            [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
+            <i class="material-icons">
+                {{ form.controls['password'].hasError('required') 
+                || form.controls['password'].hasError('hasSpecialCharacters')
+                ? 'cancel' : 'check_circle'}}
+            </i>
+            Must have at least 1 special character.
+        </label> -->
+        <label>Confirm Password</label>
+        <br>
+        <input type="password" [formControlName]="'confirmpass'"/>
+        <br>
+        <label class="text-danger" *ngIf="form.controls['confirmPass'].hasError('mustMatch')">
+            Passwords do not match
+        </label>
+        <br>
 <button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
-        <!--Can work if signup component is created-->
-        <!--<a href="/signup">Create a new account</a>-->   
     </form>
 </div>
