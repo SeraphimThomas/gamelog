@@ -24,7 +24,7 @@ export class SignupComponent implements OnInit {
               CustomValidators.patternValidator(/\d/, { hasNumber: true }),
               CustomValidators.patternValidator(/[A-Z]/, { hasCapitalCase: true}),
               CustomValidators.patternValidator(/[a-z]/, { hasSmallCase: true}),
-              // CustomValidators.patternValidator(/[!@#$%^&*_+-=;':"|,.?]/,{ hasSpecialCharacters: true}),
+              CustomValidators.patternValidator(/[!@#$%&-]/,{ hasSpecialCharacters: true}),
               Validators.minLength(8)])
       ],
       confirmPass: ['', Validators.compose([Validators.required, Validators.minLength(8)])]

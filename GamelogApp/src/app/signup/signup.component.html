@@ -2,7 +2,7 @@
     <div *ngIf="incorrect === false" id="false" style="text-align: center;">
         <p>Please enter a valid username and password</p>
     </div>
-    <form [formGroup]="form" (ngSubmit)="signUp()">
+    <form [formGroup]="form" (ngSubmit)="signUp()" class="cotainer">
         <label>Username:</label>
         <br>
         <input type="text" [formControlName]="'username'"/>
@@ -56,7 +56,7 @@
             Must have at least 1 lower case letter (a-z).
         </label>
         <br>
-        <!-- <label
+        <label
             class="col"
             [ngClass]="form.controls['password'].hasError('required') || form.controls['password'].hasError('hasSpecialCharacters') ? 'text-danger' : 'text-success'">
             <i class="material-icons">
@@ -64,11 +64,10 @@
                 || form.controls['password'].hasError('hasSpecialCharacters')
                 ? 'cancel' : 'check_circle'}}
             </i>
-            Must have at least 1 special character.
-        </label> -->
-        <label>Confirm Password</label>
+            Must have at least 1 special character (!@#$%^&*)
+        </label>
         <br>
-        <input type="password" [formControlName]="'confirmpass'"/>
+        <input type="password" [formControlName]="'confirmPass'" id="floatingPassword" placeholder="Confirm Password"/>
         <br>
         <label class="text-danger" *ngIf="form.controls['confirmPass'].hasError('mustMatch')">
             Passwords do not match
