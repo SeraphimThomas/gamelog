@@ -69,9 +69,9 @@
         <br>
         <input type="password" [formControlName]="'confirmPass'" id="floatingPassword" placeholder="Confirm Password"/>
         <br>
-        <label class="text-danger" *ngIf="form.controls['confirmPass'].hasError('mustMatch')">
-            Passwords do not match
-        </label>
+        <div *ngIf="form.confirmPass.touched && form.confirmPass.invalid" class="alert alert-danger">
+            <div *ngIf="form.confirmPass.errors.confirmedValidator">Passwords don't match</div>
+        </div>
         <br>
 <button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
     </form>
