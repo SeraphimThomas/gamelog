@@ -29,10 +29,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  setCookie(username: string){
-    this.cookie.set('Login', username);
-  }
-
 onSubmit():void{
   console.log("The username is: " + this.form.getRawValue);
   let user:User = {username: this.form.value.username,
@@ -42,8 +38,8 @@ onSubmit():void{
       if(data === null){
         this.incorrect=true;
       }else{
-        // localStorage.setItem("id", String(data.userId));
-          // localStorage.setItem("username", String(data.username));
+        localStorage.setItem("id", String(data.userid));
+        console.log(data.userid);
           this.cookie.set('Login', String(data.username), 0.25);
           this.router.navigate(['home']);
       }

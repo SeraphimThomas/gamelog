@@ -1,7 +1,7 @@
 import { LoginComponent } from "../login/login.component";
 
 export interface User {
-    userId?: number;
+    userid?: number;
     username?: string;
     password?: string;
 }

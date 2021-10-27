@@ -7,13 +7,12 @@ import gamelog.main.model.Games;
 public interface GamesManager {
 
 	Games create(Games games);
-	
-	Games findById(int id);
-	
-	List<Games> findByUser();
 
-	List<Games> findAll(int id);
+	
+	List<Games> findMyGames(int id);
 
-	Games create(GamesManager games);
+	List<Games> findAll();
+
+//	Games create(GamesManager games);
 	
 }

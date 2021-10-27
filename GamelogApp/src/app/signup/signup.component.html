@@ -1,6 +1,6 @@
 <div>
     <div *ngIf="incorrect === false" id="false" style="text-align: center;">
-        <p>Please enter a valid username and password</p>
+        <p><strong>Please enter a valid username and password</strong></p>
     </div>
     <form [formGroup]="form" (ngSubmit)="signUp()" class="cotainer">
         <label>Username:</label>
@@ -67,11 +67,11 @@
             Must have at least 1 special character (!@#$%^&*)
         </label>
         <br>
-        <input type="password" [formControlName]="'confirmPass'" id="floatingPassword" placeholder="Confirm Password"/>
+        <!-- <input type="password" [formControlName]="'confirmPass'" id="floatingPassword" placeholder="Confirm Password"/>
         <br>
         <div *ngIf="form.confirmPass.touched && form.confirmPass.invalid" class="alert alert-danger">
             <div *ngIf="form.confirmPass.errors.confirmedValidator">Passwords don't match</div>
-        </div>
+        </div> -->
         <br>
 <button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
     </form>

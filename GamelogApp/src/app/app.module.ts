@@ -12,6 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { SignupComponent } from './signup/signup.component';
 import { AddGameComponent } from './add-game/add-game.component';
 import { TopGamesComponent } from './top-games/top-games.component';
+import { MyGamesComponent } from './my-games/my-games.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TopGamesComponent } from './top-games/top-games.component';
     LoginComponent,
     SignupComponent,
     AddGameComponent,
-    TopGamesComponent
+    TopGamesComponent,
+    MyGamesComponent
   ],
   imports: [
     FormsModule,

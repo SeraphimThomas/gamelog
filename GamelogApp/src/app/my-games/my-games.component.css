@@ -1,0 +1,7 @@
+.container{
+    width: 700px;
+    clear: both;
+}
+.container, h1{
+    text-align: center;
+}

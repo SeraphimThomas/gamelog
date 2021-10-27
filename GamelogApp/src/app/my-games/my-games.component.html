@@ -1,0 +1,9 @@
+<h1>Welcome back!  Here's your game catalog!</h1>
+
+<div class="container">
+    <ul>
+        <li *ngFor="let game of myGames">
+            <span class="text-secondary">{{game.gamename}}</span> {{game.gamesystem}}
+        </li>
+    </ul>
+</div>

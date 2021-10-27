@@ -20,8 +20,11 @@
             <li class="nav-item">
                 <a class="navbar-brand" routerLink="signup">SignUp</a>
             </li>
+            <li class="nav-item">
+                <a class="navbar-brand" routerLink="mygames">My Games</a>
+            </li>
             <li *ngIf="this.cookies.check('Login') == true">
-                <button type="button" class="btn btn-danger" (click)="deleteCookie()">Logout</button>
+                <button type="button" class="btn btn-danger" (click)="logout()">Logout</button>
             </li>
         </ul>
     </div>

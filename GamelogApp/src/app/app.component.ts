@@ -16,9 +16,10 @@ constructor(public cookies:CookieService,
             private router:Router){
   
 }
-deleteCookie(){
+logout(){
   this.cookies.delete('Login');
-  this.router.navigate(['login'])
+  localStorage.removeItem("id");
+  this.router.navigate(['login']);
 }
 
 ngOnInit(): void{

@@ -27,10 +27,10 @@ export class SignupComponent implements OnInit {
               CustomValidators.patternValidator(/[_!@#$%&-()[\]+={}|\\'".,<>?]/,{ hasSpecialCharacters: true}),
               Validators.minLength(8)])
       ],
-      confirmPass: ['', Validators.compose([Validators.required, Validators.minLength(8)])]
-    },
-    { validator: CustomValidators.passwordMatchValidator('password', 'confirmPass')
-    });
+      // confirmPass: ['', Validators.compose([Validators.required, Validators.minLength(8)])]
+    }
+    // { validator: CustomValidators.passwordMatchValidator('password', 'confirmPass')}
+    );
   }
 
   ngOnInit(): void {

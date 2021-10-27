@@ -20,23 +20,18 @@ public class GameManagerImpl implements GamesManager{
 	}
 
 	@Override
-	public Games findById(int id) {
-		return null;
+	public List<Games> findMyGames(int id) {
+		return dao.findById(id);
 	}
 
 	@Override
-	public List<Games> findByUser() {
+	public List<Games> findAll() {
 		return null;
 	}
 
-	@Override
-	public List<Games> findAll(int id) {
-		return null;
-	}
-
-	@Override
-	public Games create(GamesManager games) {
-		return null;
-	}
+//	@Override
+//	public Games create(GamesManager games) {
+//		return null;
+//	}
 
 }
