@@ -5,3 +5,10 @@
 .container, h1{
     text-align: center;
 }
+ul li{
+    text-align: left;
+}
+h1.container{
+    background-color: rgb(128, 127, 127);
+    border-radius: 10ch;
+}

@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <label for="username" class="form-label mt-4">Username:</label>
         <br>
@@ -6,7 +6,19 @@
         <br>
         <label for="password">Password:</label>
         <br>
-        <input type="password" [formControlName]="'password'"/>
+    <div class="input-group">
+        <input [type]="fieldTextType ? 'text' : 'password'" [formControlName]="'password'"/>
+        <div class="input-group-prepend">
+            <span class="input-group-text">
+                <i class="fa" [ngClass]="{
+                    'fa-eye-slash': !fieldTextType,
+                    'fa-eye': fieldTextType
+                    }"
+                    (click)="toggleFieldTextType()">
+                </i>
+            </span>
+        </div>
+    </div>
 <br>
 <button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
         <!--Can work if signup component is created-->

@@ -1,14 +1,7 @@
 .container{
-    width: 700px;
+    width: 400px;
     clear: both;
 }
 input{
-    width:200px;
-}
-.container input{
-    width: 100%;
-    clear: both;
-}
-form{
-    text-align: center;
+    width:50%;
 }

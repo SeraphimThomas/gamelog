@@ -21,6 +21,7 @@ export class MyGamesComponent implements OnInit {
   showUserGames(): void{
     this.userGames.userGameList().subscribe(gameList=>{
       this.myGames = gameList;
+      this.myGames.sort((a, b) => (a.gamename < b.gamename) ? -1 : 1);
     })
   }
 

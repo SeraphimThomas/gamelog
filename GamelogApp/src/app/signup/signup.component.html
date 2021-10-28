@@ -1,15 +1,28 @@
-<div>
-    <div *ngIf="incorrect === false" id="false" style="text-align: center;">
-        <p><strong>Please enter a valid username and password</strong></p>
+<div class="container">
+    <div *ngIf="incorrect === true" id="false" style="text-align: center;">
+        <p>Please enter a valid username and password</p>
     </div>
-    <form [formGroup]="form" (ngSubmit)="signUp()" class="cotainer">
+    <form [formGroup]="form" (ngSubmit)="signUp()">
+        
         <label>Username:</label>
         <br>
         <input type="text" [formControlName]="'username'"/>
         <br>
         <label>Password:</label>
         <br>
-        <input type="password" [formControlName]="'password'"/>
+        <div class="input-group">
+            <input [type]="fieldTextType ? 'text' : 'password'" [formControlName]="'password'"/>
+            <div class="input-group-append">
+                <span class="input-group-text">
+                    <i class="fa" [ngClass]="{
+                        'fa-eye-slash': !fieldTextType,
+                        'fa-eye': fieldTextType
+                        }"
+                        (click)="toggleFieldTextType()">
+                    </i>
+                </span>
+            </div>
+        </div>
         <br>
         <label
             class="col"

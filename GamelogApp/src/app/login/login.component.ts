@@ -19,11 +19,12 @@ export class LoginComponent implements OnInit {
   private cookie_name = "";
   password = "";
   username = "";
+  fieldTextType: boolean = false;
 
   constructor(private readonly fb: FormBuilder, private loginService:LoginService, private router:Router, private cookie:CookieService) { 
     this.form = this.fb.group({
-      username: [],
-      password: []
+      username: "",
+      password: ""
     });
   }
   ngOnInit(): void {
@@ -45,6 +46,10 @@ onSubmit():void{
       }
     }
   })
+}
+
+toggleFieldTextType(){
+  this.fieldTextType = !this.fieldTextType;
 }
 
 }

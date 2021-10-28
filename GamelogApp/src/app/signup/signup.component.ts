@@ -14,6 +14,7 @@ export class SignupComponent implements OnInit {
   newAcc = new FormControl('');
   form: FormGroup;
   incorrect:boolean = false;
+  fieldTextType: boolean = false;
 
   constructor(private readonly fb: FormBuilder, private signService:SignupService, private router: Router) {
     this.form = this.fb.group({
@@ -38,6 +39,9 @@ export class SignupComponent implements OnInit {
 
   get f(){
     return this.form.controls;
+  }
+  toggleFieldTextType(){
+    this.fieldTextType = !this.fieldTextType;
   }
 
   signUp():void{

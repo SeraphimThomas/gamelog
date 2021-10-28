@@ -2,13 +2,11 @@
     width: 700px;
     clear: both;
 }
-input{
+form input{
     width:200px;
+    align-items: center;
 }
-.container input{
-    width: 100%;
-    clear: both;
-}
-form{
+/* form{
     text-align: center;
-}
+    vertical-align: auto;
+} */
