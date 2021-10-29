@@ -29,9 +29,15 @@ public class GamesController {
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@PostMapping(consumes="application/json",produces="application/json")
+	@PostMapping(consumes="application/json", produces="application/json")
 	public Games create(@RequestBody Games game) {
 		return manager.create(game);
+	}
+	
+	@CrossOrigin(origins="http://localhost:4200")
+	@GetMapping(path="/top", produces = "application/json")
+	public List<Games> findTopTen(){
+		return manager.findTopTen();
 	}
 
 }

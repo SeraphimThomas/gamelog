@@ -26,7 +26,12 @@ public class GameManagerImpl implements GamesManager{
 
 	@Override
 	public List<Games> findAll() {
-		return null;
+		return dao.findAll();
+	}
+
+	@Override
+	public List<Games> findTopTen() {
+		return dao.findTopTen();
 	}
 
 //	@Override

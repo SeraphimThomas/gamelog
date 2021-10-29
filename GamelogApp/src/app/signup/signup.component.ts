@@ -15,6 +15,7 @@ export class SignupComponent implements OnInit {
   form: FormGroup;
   incorrect:boolean = false;
   fieldTextType: boolean = false;
+  signUpDone: boolean = false;
 
   constructor(private readonly fb: FormBuilder, private signService:SignupService, private router: Router) {
     this.form = this.fb.group({
@@ -45,6 +46,7 @@ export class SignupComponent implements OnInit {
   }
 
   signUp():void{
+    this.signUpDone = false;
     console.log("The sign in was for "+ this.form.getRawValue);
     let user:User = {username: this.form.value.username,
     password: this.form.value.password};
@@ -54,10 +56,10 @@ export class SignupComponent implements OnInit {
           this.incorrect=true;
         }else{
           console.log("A new user has been registered: " + data.password);
+          this.signUpDone = true;
         }
       }
     })
-    this.router.navigate(['login']);
   }
 
 }

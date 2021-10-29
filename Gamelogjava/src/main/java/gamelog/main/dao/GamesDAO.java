@@ -15,4 +15,7 @@ public interface GamesDAO extends JpaRepository<Games, Integer>{
 	@Query(value = "SELECT * FROM gamedb.games WHERE userid = ?1", nativeQuery=true)
 	List<Games> findById(@Param("Id")int id);
 
+	@Query(value = "SELECT * FROM topTen", nativeQuery=true)
+	List<Games> findTopTen();
+
 }

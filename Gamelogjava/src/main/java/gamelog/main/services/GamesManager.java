@@ -12,6 +12,8 @@ public interface GamesManager {
 	List<Games> findMyGames(int id);
 
 	List<Games> findAll();
+	
+	List<Games> findTopTen();
 
 //	Games create(GamesManager games);
 	

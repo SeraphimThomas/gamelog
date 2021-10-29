@@ -2,6 +2,10 @@
     <div *ngIf="incorrect === true" id="false" style="text-align: center;">
         <p>Please enter a valid username and password</p>
     </div>
+    <div *ngIf="signUpDone === true" class="alert alert-dismissible alert-success">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        You've signed up!  Please go to the login page to sign in to your new account!
+    </div>
     <form [formGroup]="form" (ngSubmit)="signUp()">
         
         <label>Username:</label>

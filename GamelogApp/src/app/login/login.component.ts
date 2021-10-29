@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
 onSubmit():void{
+  this.incorrect=false;
   console.log("The username is: " + this.form.getRawValue);
   let user:User = {username: this.form.value.username,
                   password: this.form.value.password};
@@ -40,9 +41,8 @@ onSubmit():void{
         this.incorrect=true;
       }else{
         localStorage.setItem("id", String(data.userid));
-        console.log(data.userid);
-          this.cookie.set('Login', String(data.username), 0.25);
-          this.router.navigate(['home']);
+        this.cookie.set('Login', String(data.username), 0.25);
+        this.router.navigate(['home']);
       }
     }
   })

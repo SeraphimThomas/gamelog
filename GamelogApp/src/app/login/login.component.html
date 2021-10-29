@@ -24,4 +24,11 @@
         <!--Can work if signup component is created-->
         <!--<a href="/signup">Create a new account</a>-->   
     </form>
+    <div *ngIf="incorrect===true">
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <strong>Oh no!</strong> Something went wrong.  Try again!
+        </div>
+
+    </div>
 </div>
