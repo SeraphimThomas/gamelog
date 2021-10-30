@@ -3,6 +3,7 @@ package gamelog.main.services;
 import java.util.List;
 
 import gamelog.main.model.Games;
+import gamelog.main.model.TopGames;
 
 public interface GamesManager {
 
@@ -12,8 +13,9 @@ public interface GamesManager {
 	List<Games> findMyGames(int id);
 
 	List<Games> findAll();
-	
-	List<Games> findTopTen();
+
+
+	List<TopGames> findTopGames();
 
 //	Games create(GamesManager games);
 	

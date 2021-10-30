@@ -4,7 +4,7 @@ export interface Game {
     gameid: number;
     gamename: string;
     gamesystem: string;
-    playtime?: number;
+    playtime: number;
     dateadded: Date;
     datachanged: Date;
 }

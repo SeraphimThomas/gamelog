@@ -10,11 +10,24 @@ import { UserGamesService } from '../service/user-games.service';
 export class TopGamesComponent implements OnInit {
 
   topGames: Game[] = [];
+  collection = { count: 30, data: []};
+  config: any;
+  
 
-  constructor(private games:UserGamesService) { }
+  constructor(private games:UserGamesService) {
+    this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.collection.count
+    };
+  }
 
   ngOnInit(): void {
     this.getTopGames();
+  }
+
+  pageChanged(event: any){
+    this.config.currentPage = event;
   }
 
   getTopGames(){

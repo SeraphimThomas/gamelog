@@ -33,11 +33,6 @@ public class GamesController {
 	public Games create(@RequestBody Games game) {
 		return manager.create(game);
 	}
-	
-	@CrossOrigin(origins="http://localhost:4200")
-	@GetMapping(path="/top", produces = "application/json")
-	public List<Games> findTopTen(){
-		return manager.findTopTen();
-	}
+
 
 }
