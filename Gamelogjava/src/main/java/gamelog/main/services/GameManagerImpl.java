@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import gamelog.main.dao.GamesDAO;
 import gamelog.main.model.Games;
-import gamelog.main.model.TopGames;
 
 @Service
 public class GameManagerImpl implements GamesManager{
@@ -30,10 +29,6 @@ public class GameManagerImpl implements GamesManager{
 		return dao.findAll();
 	}
 
-	@Override
-	public List<TopGames> findTopGames() {
-		return dao.findTopGames();
-	}
 
 //	@Override
 //	public Games create(GamesManager games) {

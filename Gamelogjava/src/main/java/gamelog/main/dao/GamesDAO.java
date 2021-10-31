@@ -11,11 +11,8 @@ import gamelog.main.model.Games;
 import gamelog.main.model.TopGames;
 
 @Repository
-public interface GamesDAO extends JpaRepository<Games, Integer>{
+public interface GamesDAO extends JpaRepository<Games, Integer> {
 
-	@Query(value = "SELECT * FROM gamedb.games WHERE userid = ?1", nativeQuery=true)
-	List<Games> findById(@Param("Id")int id);
-
-	@Query(value = "SELECT * FROM topGames", nativeQuery=true)
-	List<TopGames> findTopGames();
+	@Query(value = "SELECT * FROM gamedb.games WHERE userid = ?1", nativeQuery = true)
+	List<Games> findById(@Param("Id") int id);
 }
