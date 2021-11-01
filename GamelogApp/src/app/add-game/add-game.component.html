@@ -1,1 +1,14 @@
-<p>add-game works!</p>
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="addNewGame()">
+        <label>Game Name</label>
+        <br>
+        <input type="text" [formControlName]="'gamename'"/>
+        <br>
+        <label>Game System</label>
+        <br>
+        <select></select>
+        <label>Play Time</label>
+        <input type="number" [formControlName]="'playtime'"/>
+
+    </form>
+</div>

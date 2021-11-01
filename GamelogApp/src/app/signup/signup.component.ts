@@ -57,6 +57,8 @@ export class SignupComponent implements OnInit {
         }else{
           console.log("A new user has been registered: " + data.password);
           this.signUpDone = true;
+          this.form.value.username = "";
+          this.form.value.password = "";
         }
       }
     })

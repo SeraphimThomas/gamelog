@@ -21,7 +21,10 @@ export class LoginComponent implements OnInit {
   username = "";
   fieldTextType: boolean = false;
 
-  constructor(private readonly fb: FormBuilder, private loginService:LoginService, private router:Router, private cookie:CookieService) { 
+  constructor(private readonly fb: FormBuilder, 
+    private loginService:LoginService, 
+    private router:Router, 
+    private cookie:CookieService) { 
     this.form = this.fb.group({
       username: "",
       password: ""

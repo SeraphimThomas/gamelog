@@ -8,7 +8,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import gamelog.main.model.Games;
-import gamelog.main.model.TopGames;
 
 @Repository
 public interface GamesDAO extends JpaRepository<Games, Integer> {

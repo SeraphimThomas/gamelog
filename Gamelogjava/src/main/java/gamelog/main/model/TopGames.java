@@ -2,11 +2,17 @@ package gamelog.main.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "topGames")
+@Table(name = "games")
 @Entity
 public class TopGames {
+	
+	@Id
+	@Column(name="gameid")
+	private int gameid;
+	
 	@Column
 	private String gamename;
 	@Column
