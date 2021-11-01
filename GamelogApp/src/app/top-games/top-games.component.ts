@@ -12,6 +12,8 @@ export class TopGamesComponent implements OnInit {
   topGames: Game[] = [];
   collection = { count: 30, data: []};
   config: any;
+  options: String[] = ["Alphabetical", "Playtime"];
+  sortingOption: String = "Alphabetical";
   
 
   constructor(private games:UserGamesService) {
@@ -23,17 +25,31 @@ export class TopGamesComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getTopGames();
+    this.getTopGames(this.sortingOption);
   }
 
   pageChanged(event: any){
     this.config.currentPage = event;
   }
 
-  getTopGames(){
-    this.games.topTenGames().subscribe(gameList=>{
+  getTopGames(sort: String){
+    this.games.topGames().subscribe(gameList=>{
       this.topGames = gameList;
-      this.topGames.sort((a, b) => (a.gamename < b.gamename) ? -1 : 1);
+      if (sort === "Alphabetical"){
+        this.topGames.sort((a, b) => (a.gamename < b.gamename) ? -1 : 1);
+        }else if (sort === "Playtime"){
+        this.topGames.sort((a, b)=> (a.playtime < b.playtime) ? -1 : 1);
+        }
     })
+  }
+
+  selectedSorting(event: any){
+    this.sortingOption = event.target.value;
+    console.log(this.sortingOption);
+    this.sortingTG(this.sortingOption);
+  }
+
+  sortingTG(sort: String){
+    
   }
 }

@@ -6,9 +6,13 @@
         <br>
         <label>Game System</label>
         <br>
-        <select></select>
+        <select [formControlName]="'gamesystem'">
+            <option value="">Select System</option>
+            <option *ngFor="let option of options">{{option}}</option>
+        </select>
         <label>Play Time</label>
         <input type="number" [formControlName]="'playtime'"/>
-
+        <br>
+        <button type="submit" class="btn btn-secondary btn-lg">Add Game</button>
     </form>
 </div>

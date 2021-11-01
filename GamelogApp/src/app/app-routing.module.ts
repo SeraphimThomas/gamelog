@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { SignupComponent } from './signup/signup.component';
 import { MyGamesComponent } from './my-games/my-games.component';
+import { AddGameComponent } from './add-game/add-game.component';
 
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},

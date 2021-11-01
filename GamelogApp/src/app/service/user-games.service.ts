@@ -16,8 +16,8 @@ export class UserGamesService {
     return this.http.get<Game[]>(`http://localhost:8080/games/${this.id}`)
   }
 
-  topTenGames(): Observable<Game[]>{
-    return this.http.get<Game[]>(`http://localhost:8080/games/top`)
+  topGames(): Observable<Game[]>{
+    return this.http.get<Game[]>(`http://localhost:8080/topgames`)
   }
 
 }

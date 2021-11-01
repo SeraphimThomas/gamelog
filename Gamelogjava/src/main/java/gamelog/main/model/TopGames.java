@@ -5,14 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Table(name = "games")
+@Table(name = "top_games")
 @Entity
 public class TopGames {
 	
 	@Id
-	@Column(name="gameid")
-	private int gameid;
-	
 	@Column
 	private String gamename;
 	@Column
