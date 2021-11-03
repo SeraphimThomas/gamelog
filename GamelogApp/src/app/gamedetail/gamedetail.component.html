@@ -1,0 +1,5 @@
+<div *ngIf="game">
+    <h2>{{game.gamename}} Stats</h2>
+    <div><span>{{game.playtime}}</span></div>
+</div>
+<app-my-games (gameEvent)="recieveGame($event)"></app-my-games>

@@ -4,7 +4,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { Game } from '../models/game';
 import { User } from '../models/user';
-import { LoginService } from '../service/login.service';
 import { NewGameService } from '../service/new-game.service';
 
 @Component({
@@ -18,7 +17,7 @@ export class AddGameComponent implements OnInit {
   form: FormGroup
   user: User = {}
   options: String[] = ["PC", "Nintendo", "Xbox", "Playstation"]
-
+  userid = JSON.parse(localStorage.getItem('id')|| '{}');
 
   constructor(private readonly fb: FormBuilder, 
     private newGameService: NewGameService, 
@@ -27,7 +26,7 @@ export class AddGameComponent implements OnInit {
         gamename: ["",Validators.required],
         gamesystem: ["",Validators.required],
         playtime: ["",Validators.required],
-        userid: ""
+        userid: 0
       });
     }
 
@@ -39,10 +38,11 @@ export class AddGameComponent implements OnInit {
     let game:Game = {gamename: this.form.value.gamename,
                     gamesystem: this.form.value.gamesystem,
                     playtime: this.form.value.playtime,
-                    userid: JSON.parse(localStorage.getItem('id')|| '{}')}
+                    user: { userid: Number(localStorage.getItem('id'))}}
     this.newGameService.addNewGame(game).subscribe({
-      next: (data:Game)=>{
+      next: ()=>{
         console.log("The game has been added.")
+        location.reload();
         }
       }
     )

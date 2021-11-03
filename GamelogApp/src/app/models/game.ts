@@ -1,6 +1,7 @@
+import { User } from "./user";
 
 export interface Game {
-    userid: number;
+    user?: User;
     gameid?: number;
     gamename: string;
     gamesystem: string;

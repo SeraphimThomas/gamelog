@@ -29,7 +29,7 @@ public class Games {
 	@Column
 	private double playtime;
 	@Column
-	private Date dateadded;
+	private Date dateadded = new Date();
 	@Column
 	private Date datechanged;
 

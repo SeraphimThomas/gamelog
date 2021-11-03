@@ -13,16 +13,21 @@ import { SignupComponent } from './signup/signup.component';
 import { AddGameComponent } from './add-game/add-game.component';
 import { TopGamesComponent } from './top-games/top-games.component';
 import { MyGamesComponent } from './my-games/my-games.component';
+import { GamedetailComponent } from './gamedetail/gamedetail.component';
+import { TimePipe } from './time.pipe';
+
 
 @NgModule({
   declarations: [
+    TimePipe,
     AppComponent,
     HomeComponent,
     LoginComponent,
     SignupComponent,
     AddGameComponent,
     TopGamesComponent,
-    MyGamesComponent
+    MyGamesComponent,
+    GamedetailComponent
   ],
   imports: [
     FormsModule,

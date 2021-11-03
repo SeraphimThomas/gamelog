@@ -16,8 +16,17 @@ export class UserGamesService {
     return this.http.get<Game[]>(`http://localhost:8080/games/${this.id}`)
   }
 
+  getGame(gameid: number): Observable<Game>{
+    return this.http.get<Game>(`http://localhost:8080/${gameid}`)
+  }
+
   topGames(): Observable<Game[]>{
     return this.http.get<Game[]>(`http://localhost:8080/topgames`)
   }
+
+  // updateGame(): Observable<Game>{
+  //   console.log("Updating game");
+  //   return this.http.put<Game>(`http://localhost:8080/games/update/${gameid}`)
+  // }
 
 }

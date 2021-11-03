@@ -11,12 +11,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let game of myGames" class="table-success">
-                <td>{{game.gamename}}</td>
-                <td>{{game.gamesystem}}</td>
-                <td>{{game.dateadded | date: 'fullDate'}}</td>
-                <td>{{game.playtime | number: '1.0-1'}} hours
-                </td>
+            <tr *ngFor="let game of myGames" class="table-success"
+            (click)="sendGame()">
+                    <td>{{game.gamename}}</td>
+                    <td>{{game.gamesystem}}</td>
+                    <td>{{game.dateadded | date: 'fullDate'}}</td>
+                    <td>{{game.playtime | time}}</td>
             </tr>
         </tbody>
     </table>
@@ -25,3 +25,4 @@
 <div>
     <app-add-game></app-add-game>
 </div>
+
