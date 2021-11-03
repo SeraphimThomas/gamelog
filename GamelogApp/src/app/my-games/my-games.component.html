@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let game of myGames" class="table-success"
-            (click)="sendGame()">
+            (click)="sendGame(game)">
                     <td>{{game.gamename}}</td>
                     <td>{{game.gamesystem}}</td>
                     <td>{{game.dateadded | date: 'fullDate'}}</td>
@@ -21,7 +21,7 @@
         </tbody>
     </table>
 </div>
-
+<app-gamedetail [game]="selectedGame"></app-gamedetail>
 <div>
     <app-add-game></app-add-game>
 </div>

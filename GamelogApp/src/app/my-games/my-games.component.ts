@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Game } from '../models/game';
 import { UserGamesService } from '../service/user-games.service';
@@ -14,7 +14,6 @@ export class MyGamesComponent implements OnInit {
   myGames: Game[] = [];
   userId: number = 0;
   selectedGame?: Game;
-  @Output() gameEvent = new EventEmitter<Game>();
 
   constructor(public userGames:UserGamesService,
               public router:Router) { }
@@ -31,9 +30,9 @@ export class MyGamesComponent implements OnInit {
   }
 
   sendGame(game: Game){
-    this.gameEvent.emit(game);
-    var id = game ? game.gameid : null;
-    this.router.navigate([`/detail`, { id: id }])
+    this.selectedGame=game;
+    console.log(this.selectedGame);
+    // this.router.navigate([`/detail/${game.gameid}`])
   }
 
-}
+  }

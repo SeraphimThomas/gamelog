@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Game } from '../models/game';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserGamesService } from '../service/user-games.service';
 
@@ -11,18 +11,16 @@ import { UserGamesService } from '../service/user-games.service';
 })
 export class GamedetailComponent implements OnInit {
 
-  public game:Game | undefined;
+  @Input() game?: Game;
   
-  constructor(private route: ActivatedRoute,
+  constructor(private route: Router,
               private gameService: UserGamesService,
               private location: Location) { }
 
   ngOnInit(): void {
-    
+    console.log("The game is: " + this.game);
   }
 
-  recieveGame($event: Game | undefined){
-    this.game = $event
-  }
+
 
 }
