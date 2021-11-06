@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Game } from '../models/game';
+import { DatashareService } from '../service/datashare.service';
 import { UserGamesService } from '../service/user-games.service';
 
 
@@ -16,7 +17,8 @@ export class MyGamesComponent implements OnInit {
   selectedGame?: Game;
 
   constructor(public userGames:UserGamesService,
-              public router:Router) { }
+              public router:Router,
+              public sharedData:DatashareService) { }
 
   ngOnInit(): void {
     this.showUserGames();
@@ -30,9 +32,9 @@ export class MyGamesComponent implements OnInit {
   }
 
   sendGame(game: Game){
-    this.selectedGame=game;
-    console.log(this.selectedGame);
-    // this.router.navigate([`/detail/${game.gameid}`])
+    console.log(game);
+    this.sharedData.setGame(game);
+    this.router.navigate([`/detail/${game.gameid}`])
   }
 
   }

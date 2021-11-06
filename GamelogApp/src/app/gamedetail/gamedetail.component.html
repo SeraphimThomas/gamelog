@@ -1,5 +1,8 @@
-<div *ngIf="game">
+<div *ngIf="game" class="container">
     <h2>{{game.gamename}} Stats</h2>
-    <div><span>{{game.playtime | time}}</span></div>
+    <div>Playtime: <span>{{game.playtime | time}}</span></div>
+    <div>System: <span>{{game.gamesystem}}</span></div>
+    <div>Added on: <span>{{game.dateadded | date: 'fullDate'}}</span></div>
+    <div>Last Modified: <span>{{game.datechanged | date: 'fullDate'}}</span></div>
 </div>
 

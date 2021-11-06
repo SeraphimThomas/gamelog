@@ -7,5 +7,5 @@ export interface Game {
     gamesystem: string;
     playtime: number;
     dateadded?: Date;
-    datachanged?: Date;
+    datechanged?: Date;
 }
