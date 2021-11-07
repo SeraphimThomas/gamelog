@@ -32,6 +32,8 @@ export class GamedetailComponent implements OnInit {
     this.gameService.getGame(gameId).subscribe(game =>
       {
         this.game=game;
+        //add in functionality: If userId of game choosen does NOT match with userId currently in localStorage/cookie,
+        //than do not allow access
       });
   }
 

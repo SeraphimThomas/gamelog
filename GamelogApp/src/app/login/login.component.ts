@@ -43,7 +43,7 @@ onSubmit():void{
       if(data === null){
         this.incorrect=true;
       }else{
-        localStorage.setItem("id", String(data.userid));
+        this.cookie.set('id', String(data.userid), 0.25);
         this.cookie.set('Login', String(data.username), 0.25);
         this.router.navigate(['home']);
       }

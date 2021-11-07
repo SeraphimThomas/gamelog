@@ -15,6 +15,7 @@ public interface GamesManager {
 
 	List<Games> findAll();
 
+	Games findGame(int gameId);
 
 //	Games create(GamesManager games);
 

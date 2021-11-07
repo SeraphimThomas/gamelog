@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { Game } from '../models/game';
 
@@ -7,9 +8,13 @@ import { Game } from '../models/game';
   providedIn: 'root'
 })
 export class UserGamesService {
-  id = localStorage.getItem("id");
+  
+  id = this.cookieServ.get('userId');
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,
+              private cookieServ:CookieService) {
+               
+               }
 
   userGameList(): Observable<Game[]>{
     console.log(this.id);
@@ -17,7 +22,7 @@ export class UserGamesService {
   }
 
   getGame(gameid: number): Observable<Game>{
-    return this.http.get<Game>(`http://localhost:8080/${gameid}`)
+    return this.http.get<Game>(`http://localhost:8080/games/details/${gameid}`)
   }
 
   topGames(): Observable<Game[]>{

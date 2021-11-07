@@ -33,6 +33,12 @@ public class GamesController {
 	public Games create(@RequestBody Games game) {
 		return manager.create(game);
 	}
+	
+	@CrossOrigin(origins="http://localhost:4200")
+	@PostMapping(path="/detail/{gameId}", consumes="application/json", produces="applicaton/json")
+	public Games findGame(@PathVariable int gameId) {
+		return manager.findGame(gameId);
+	}
 
 
 }

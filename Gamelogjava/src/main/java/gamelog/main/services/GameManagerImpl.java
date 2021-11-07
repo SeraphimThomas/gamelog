@@ -29,10 +29,12 @@ public class GameManagerImpl implements GamesManager{
 		return dao.findAll();
 	}
 
+	@Override
+	public Games findGame(int gameId) {
+		return dao.findGame(gameId);
+	}
 
-//	@Override
-//	public Games create(GamesManager games) {
-//		return null;
-//	}
+
+
 
 }
