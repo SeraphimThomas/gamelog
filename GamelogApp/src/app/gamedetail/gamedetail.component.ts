@@ -1,9 +1,10 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Game } from '../models/game';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap, Navigation } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserGamesService } from '../service/user-games.service';
 import { DatashareService } from '../service/datashare.service';
+import { MyGamesComponent } from '../my-games/my-games.component';
 
 @Component({
   selector: 'app-gamedetail',
@@ -12,18 +13,26 @@ import { DatashareService } from '../service/datashare.service';
 })
 export class GamedetailComponent implements OnInit {
 
-  game?: Game;
+  gameId: any;
+  game: any;
   
-  constructor(private route: Router,
+  constructor(private router: Router,
               private gameService: UserGamesService,
               private location: Location,
-              private dataShare: DatashareService) { }
+              private route: ActivatedRoute) { 
+                }
+              
 
   ngOnInit(): void {
-    this.game = this.dataShare.getGame();
-    console.log("The game is: " + this.game);
+    this.gameId = this.route.snapshot.params['gameid'];
+    this.loadGameDetails(this.gameId);
   }
 
-
+  loadGameDetails(gameId: number){
+    this.gameService.getGame(gameId).subscribe(game =>
+      {
+        this.game=game;
+      });
+  }
 
 }

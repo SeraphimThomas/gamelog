@@ -31,10 +31,9 @@ export class MyGamesComponent implements OnInit {
     })
   }
 
-  sendGame(game: Game){
-    console.log(game);
-    this.sharedData.setGame(game);
-    this.router.navigate([`/detail/${game.gameid}`])
+  sendGame(game: Game) : void{
+    this.selectedGame = game;
+    this.router.navigateByUrl(`/detal/${game.gameid}`)
   }
 
   }

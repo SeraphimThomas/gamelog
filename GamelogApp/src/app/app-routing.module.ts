@@ -12,8 +12,10 @@ export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
   {path: 'signup', component: SignupComponent},
-  {path: 'mygames', component: MyGamesComponent, canActivate: [AuthGuard]},
-  {path: 'detail/:gameid', component: GamedetailComponent, canActivate: [AuthGuard]},
+  {path: 'mygames', component: MyGamesComponent, canActivate: [AuthGuard], 
+      children: [
+          {path: 'detail/:gameid', component: GamedetailComponent, canActivate: [AuthGuard]}
+      ]},
   {path: '', redirectTo: '/login', pathMatch: 'full'}
 ];
 
