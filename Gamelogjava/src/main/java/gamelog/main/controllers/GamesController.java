@@ -29,15 +29,15 @@ public class GamesController {
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@PostMapping(consumes="application/json", produces="application/json")
+	@PostMapping(consumes="application/json", produces = "application/json")
 	public Games create(@RequestBody Games game) {
 		return manager.create(game);
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@PostMapping(path="/detail/{gameId}", consumes="application/json", produces="applicaton/json")
+	@GetMapping(path="/detail/{gameId}", produces = "application/json")
 	public Games findGame(@PathVariable int gameId) {
-		return manager.findGame(gameId);
+		return manager.findByGameId(gameId);
 	}
 
 

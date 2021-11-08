@@ -31,7 +31,7 @@ public class Games {
 	@Column
 	private Date dateadded = new Date();
 	@Column
-	private Date datechanged;
+	private Date datechanged = new Date();
 
 	public Games() {
 		super();

@@ -30,8 +30,8 @@ public class GameManagerImpl implements GamesManager{
 	}
 
 	@Override
-	public Games findGame(int gameId) {
-		return dao.findGame(gameId);
+	public Games findByGameId(int gameId) {
+		return dao.findByGameId(gameId);
 	}
 
 

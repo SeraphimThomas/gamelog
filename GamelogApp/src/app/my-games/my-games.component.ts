@@ -33,7 +33,7 @@ export class MyGamesComponent implements OnInit {
 
   sendGame(game: Game) : void{
     this.selectedGame = game;
-    this.router.navigateByUrl(`/detal/${game.gameid}`)
+    this.router.navigateByUrl(`/detail/${game.gameid}`)
   }
 
   }

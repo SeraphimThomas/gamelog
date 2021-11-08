@@ -9,7 +9,7 @@ import { Game } from '../models/game';
 })
 export class UserGamesService {
   
-  id = this.cookieServ.get('userId');
+  id = Number (localStorage.getItem('id'));
 
   constructor(private http:HttpClient,
               private cookieServ:CookieService) {
@@ -22,7 +22,7 @@ export class UserGamesService {
   }
 
   getGame(gameid: number): Observable<Game>{
-    return this.http.get<Game>(`http://localhost:8080/games/details/${gameid}`)
+    return this.http.get<Game>(`http://localhost:8080/games/detail/${gameid}`)
   }
 
   topGames(): Observable<Game[]>{
