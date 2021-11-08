@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { UserGamesService } from '../service/user-games.service';
 import { DatashareService } from '../service/datashare.service';
 import { MyGamesComponent } from '../my-games/my-games.component';
+import { IgdbCallService } from '../service/igdb-call.service';
 
 @Component({
   selector: 'app-gamedetail',
@@ -19,13 +20,15 @@ export class GamedetailComponent implements OnInit {
   constructor(private router: Router,
               private gameService: UserGamesService,
               private location: Location,
-              private route: ActivatedRoute) { 
+              private route: ActivatedRoute,
+              private apiService: IgdbCallService) { 
                 }
               
 
   ngOnInit(): void {
     this.gameId = this.route.snapshot.params['gameid'];
     this.loadGameDetails(this.gameId);
+    this.apiService.findGameApiDeets(this.game.gamename);
   }
 
   loadGameDetails(gameId: number){

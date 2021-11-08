@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 export class TimePipe implements PipeTransform{
     transform(minutes: number): string {
         const hours = Math.floor(minutes);
-        const minutesLeft = Math.round(minutes % 60);
+        const minutesLeft = Math.round((minutes - hours) * 60);
         return `${hours < 10 ? '0' : ''}${hours}:${minutesLeft < 10 ? '0': ''}${minutesLeft}`
     }
 }
