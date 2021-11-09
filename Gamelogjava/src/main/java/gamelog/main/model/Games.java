@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Games {
+public class Games extends Auditable<String>{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,9 +29,9 @@ public class Games {
 	@Column
 	private double playtime;
 	@Column
-	private Date dateadded = new Date();
+	private Date dateadded;
 	@Column
-	private Date datechanged = new Date();
+	private Date datechanged;
 
 	public Games() {
 		super();
