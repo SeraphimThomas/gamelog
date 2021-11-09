@@ -5,4 +5,10 @@
     <div>Added on: <span>{{game.dateadded | date: 'fullDate'}}</span></div>
     <div>Last Modified: <span>{{game.datechanged | date: 'fullDate'}}</span></div>
 </div>
+<button (click)="getApi()">Get More Info</button>
+
+<div *ngIf="gameApi" class="container">
+    <h2>{{gameApi.name}}</h2>
+    <h2>{{gameApi.desc}}</h2>
+</div>
 

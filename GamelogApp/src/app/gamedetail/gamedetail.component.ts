@@ -16,6 +16,7 @@ export class GamedetailComponent implements OnInit {
 
   gameId: any;
   game: any;
+  gameApi: any;
   
   constructor(private router: Router,
               private gameService: UserGamesService,
@@ -28,7 +29,6 @@ export class GamedetailComponent implements OnInit {
   ngOnInit(): void {
     this.gameId = this.route.snapshot.params['gameid'];
     this.loadGameDetails(this.gameId);
-    this.apiService.findGameApiDeets(this.game.gamename);
   }
 
   loadGameDetails(gameId: number){
@@ -38,6 +38,10 @@ export class GamedetailComponent implements OnInit {
         //add in functionality: If userId of game choosen does NOT match with userId currently in localStorage/cookie,
         //than do not allow access
       });
+  }
+  getApi(){
+    console.log(this.game.gamename);
+    this.apiService.findGameApiDeets(this.game.gamename);
   }
 
 }
