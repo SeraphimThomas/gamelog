@@ -40,8 +40,8 @@ export class GamedetailComponent implements OnInit {
       });
   }
   getApi(){
-    console.log(this.game.gamename);
     this.gameApi=this.apiService.findGameApiDeets(this.game.gamename);
+    console.log(this.gameApi.success);
   }
 
 }
