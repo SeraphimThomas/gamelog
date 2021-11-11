@@ -34,6 +34,11 @@ public class GameManagerImpl implements GamesManager{
 		return dao.findByGameId(gameId);
 	}
 
+	@Override
+	public Games deleteGame(int gameId) {
+		return dao.deleteGame(gameId);
+	}
+
 
 
 

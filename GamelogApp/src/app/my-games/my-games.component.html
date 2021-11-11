@@ -1,5 +1,26 @@
 <h1 class="container">Game On!</h1>
 
+<div *ngIf="confirmDeletion===true" class="modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span arai-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Confirm your deletion of {{selectedGame.gamename}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="deleteGame()">Confrim</button>
+                <button type="button" class="btn btn-secondary" 
+                data-bs-dismiss="modal" (click)="deleteDeny()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container">
     <table class="table table-hover">
         <thead>
@@ -11,12 +32,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let game of myGames" class="table-success"
-            (click)="sendGame(game)">
+            <tr *ngFor="let game of myGames" class="table-success">
                     <td>{{game.gamename}}</td>
                     <td>{{game.gamesystem}}</td>
                     <td>{{game.dateadded | date: 'fullDate'}}</td>
                     <td>{{game.playtime | time}}</td>
+                    <i class="fas fa-info-circle"
+                    (click)="sendGame(game)"></i>
+                    <i class="fas fa-skull" 
+                    (click)="confirmation(game)"></i>
             </tr>
         </tbody>
     </table>

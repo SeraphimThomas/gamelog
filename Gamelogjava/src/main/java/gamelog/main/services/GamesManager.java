@@ -17,6 +17,8 @@ public interface GamesManager {
 
 	Games findByGameId(int gameId);
 
-//	Games create(GamesManager games);
+	Games deleteGame(int gameId);
+
+
 
 }

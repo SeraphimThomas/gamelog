@@ -8,6 +8,7 @@ import { Game } from '../models/game';
   providedIn: 'root'
 })
 export class UserGamesService {
+
   
   id = Number (localStorage.getItem('id'));
 
@@ -27,6 +28,10 @@ export class UserGamesService {
 
   topGames(): Observable<Game[]>{
     return this.http.get<Game[]>(`http://localhost:8080/topgames`)
+  }
+
+  deleteGame(gamedId: Number) {
+    return this.http.delete<Game>(`http://localhost:8080/games/remove/${gamedId}`)
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, NgModule, NgModuleFactoryLoader, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Game } from '../models/game';
 import { DatashareService } from '../service/datashare.service';
@@ -14,11 +14,11 @@ export class MyGamesComponent implements OnInit {
 
   myGames: Game[] = [];
   userId: number = 0;
-  selectedGame?: Game;
+  selectedGame: any;
+  confirmDeletion: boolean = false;
 
   constructor(public userGames:UserGamesService,
-              public router:Router,
-              public sharedData:DatashareService) { }
+              public router:Router) { }
 
   ngOnInit(): void {
     this.showUserGames();
@@ -34,6 +34,25 @@ export class MyGamesComponent implements OnInit {
   sendGame(game: Game) : void{
     this.selectedGame = game;
     this.router.navigateByUrl(`/detail/${game.gameid}`)
+  }
+
+  deleteDeny(){
+    this.confirmDeletion = false;
+  }
+
+  confirmation(game: Game){
+    this.selectedGame = game;
+    this.confirmDeletion=true;
+  }
+
+  deleteGame(): void{
+    let id = this.selectedGame.gameid;
+    this.userGames.deleteGame(id).subscribe({
+      next: ()=>{
+        console.log("The game was removed");
+        location.reload();
+      }
+    })
   }
 
   }
