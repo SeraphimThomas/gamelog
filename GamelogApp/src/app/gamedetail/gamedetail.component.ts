@@ -6,6 +6,7 @@ import { UserGamesService } from '../service/user-games.service';
 import { DatashareService } from '../service/datashare.service';
 import { MyGamesComponent } from '../my-games/my-games.component';
 import { IgdbCallService } from '../service/igdb-call.service';
+import { GameDeets } from '../models/game-deets';
 
 @Component({
   selector: 'app-gamedetail',
@@ -17,6 +18,7 @@ export class GamedetailComponent implements OnInit {
   gameId: any;
   game: any;
   gameApi: any;
+  gameInfo?: GameDeets;
   
   constructor(private router: Router,
               private gameService: UserGamesService,
@@ -39,9 +41,14 @@ export class GamedetailComponent implements OnInit {
         //than do not allow access
       });
   }
-  getApi(){
-    this.gameApi=this.apiService.findGameApiDeets(this.game.gamename);
-    console.log(this.gameApi.success);
+  getData(){
+    this.gameApi= this.apiService.findGameApiDeets(this.game.gamename);
+    console.log(this.game.gamename)
+    this.gameInfo= {
+      name: this.gameApi.name,
+      summary: this.gameApi.summary
+    };
+    console.log(this.gameInfo.name);
   }
 
 }

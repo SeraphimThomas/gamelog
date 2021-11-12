@@ -17,7 +17,7 @@ public interface GamesManager {
 
 	Games findByGameId(int gameId);
 
-	Games deleteGame(int gameId);
+	void deleteGame(int gameId);
 
 
 

@@ -42,9 +42,9 @@ public class GamesController {
 	}
 	
 	@CrossOrigin(origins="http://localhost:4200")
-	@DeleteMapping(path="/delete/{gameId}", consumes="application/json")
-	public Games deleteGame(@PathVariable int gameId) {
-		return manager.deleteGame(gameId);
+	@DeleteMapping(path="/delete/{gameId}")
+	public void deleteGame(@PathVariable int gameId) {
+		manager.deleteGame(gameId);
 	}
 
 

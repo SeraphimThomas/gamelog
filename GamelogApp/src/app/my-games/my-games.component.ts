@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Game } from '../models/game';
 import { DatashareService } from '../service/datashare.service';
 import { UserGamesService } from '../service/user-games.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -43,16 +44,18 @@ export class MyGamesComponent implements OnInit {
   confirmation(game: Game){
     this.selectedGame = game;
     this.confirmDeletion=true;
+    console.log(this.selectedGame);
+    console.log(this.confirmDeletion);
   }
 
-  deleteGame(): void{
-    let id = this.selectedGame.gameid;
-    this.userGames.deleteGame(id).subscribe({
+  deleteGame(game: Game): void{
+    this.selectedGame = game;
+    this.userGames.deleteGame(this.selectedGame.gameid).subscribe({
       next: ()=>{
-        console.log("The game was removed");
+        console.log("The game " + game.gamename + " was deleted.");
         location.reload();
       }
     })
   }
+}
 
-  }

@@ -18,7 +18,6 @@ export class UserGamesService {
                }
 
   userGameList(): Observable<Game[]>{
-    console.log(this.id);
     return this.http.get<Game[]>(`http://localhost:8080/games/${this.id}`)
   }
 
@@ -31,7 +30,7 @@ export class UserGamesService {
   }
 
   deleteGame(gamedId: Number) {
-    return this.http.delete<Game>(`http://localhost:8080/games/remove/${gamedId}`)
+    return this.http.delete(`http://localhost:8080/games/delete/${gamedId}`)
   }
 
 

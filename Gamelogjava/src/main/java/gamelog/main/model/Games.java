@@ -29,9 +29,9 @@ public class Games extends Auditable<String>{
 	@Column
 	private double playtime;
 	@Column
-	private Date dateadded;
+	private Date dateadded = new Date();
 	@Column
-	private Date datechanged;
+	private Date datechanged = new Date();
 
 	public Games() {
 		super();

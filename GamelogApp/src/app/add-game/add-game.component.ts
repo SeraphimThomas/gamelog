@@ -19,7 +19,7 @@ export class AddGameComponent implements OnInit {
   options: String[] = ["PC", "Nintendo", "Xbox", "Playstation"]
   userid = JSON.parse(localStorage.getItem('id')|| '{}');
 
-  constructor(private readonly fb: FormBuilder, 
+  constructor(private readonly fb: FormBuilder,
     private newGameService: NewGameService, 
     private router:Router) { 
       this.form = this.fb.group({
