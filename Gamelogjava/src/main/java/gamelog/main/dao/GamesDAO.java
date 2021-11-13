@@ -24,4 +24,6 @@ public interface GamesDAO extends JpaRepository<Games, Integer> {
 	@Transactional
 	@Query(value = "DELETE FROM gamedb.games WHERE gameid = ?1", nativeQuery = true)
 	void deleteGame(@Param("Id") int gameId);
+	
+	
 }

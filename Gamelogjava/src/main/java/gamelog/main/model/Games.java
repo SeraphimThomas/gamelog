@@ -90,5 +90,9 @@ public class Games extends Auditable<String>{
 	public void setDatechanged(Date datechanged) {
 		this.datechanged = datechanged;
 	}
+	
+	public void updateDate() {
+		this.datechanged = new Date();
+	}
 
 }

@@ -19,6 +19,5 @@ public interface GamesManager {
 
 	void deleteGame(int gameId);
 
-
-
+	Games updateGame(Games game);
 }

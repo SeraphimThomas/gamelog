@@ -19,6 +19,7 @@ export class GamedetailComponent implements OnInit {
   game: any;
   gameApi: any;
   gameInfo?: GameDeets;
+  show: boolean = false;
   
   constructor(private router: Router,
               private gameService: UserGamesService,
@@ -32,6 +33,9 @@ export class GamedetailComponent implements OnInit {
     this.gameId = this.route.snapshot.params['gameid'];
     this.loadGameDetails(this.gameId);
   }
+  // ngDoCheck():void{
+  //   this.getData();
+  // }
 
   loadGameDetails(gameId: number){
     this.gameService.getGame(gameId).subscribe(game =>
@@ -41,14 +45,11 @@ export class GamedetailComponent implements OnInit {
         //than do not allow access
       });
   }
-  getData(){
-    this.gameApi= this.apiService.findGameApiDeets(this.game.gamename);
+  async getData(){
+    this.gameApi= await this.apiService.findGameApiDeets(this.game.gamename);
     console.log(this.game.gamename)
-    this.gameInfo= {
-      name: this.gameApi.name,
-      summary: this.gameApi.summary
-    };
-    console.log(this.gameInfo.name);
+    console.log(this.gameApi.name)
+    this.show = true;
   }
 
 }

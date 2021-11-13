@@ -4,11 +4,18 @@
     <div>System: <span>{{game.gamesystem}}</span></div>
     <div>Added on: <span>{{game.dateadded | date: 'fullDate'}}</span></div>
     <div>Last Modified: <span>{{game.datechanged | date: 'fullDate'}}</span></div>
+    <button (click)="getData()">Get More Info</button>
 </div>
-<button (click)="getData()">Get More Info</button>
-
-<div *ngIf="gameApi !== null">
-    <p>{{gameApi[0]}}</p>
+<br>
+<br>
+<div *ngIf="show===true" class="container">
+    <br>
+    <img [src]="gameApi.cover.url.replace('t_thumb', 't_cover_big')" alt="cover">
+    <br>
+{{gameApi.name}}
+<br>
+{{gameApi.summary}}
+<br>
 </div>
 
 <!-- <div *ngIf="gameApi" class="container">
