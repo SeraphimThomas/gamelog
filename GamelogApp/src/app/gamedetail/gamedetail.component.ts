@@ -1,4 +1,4 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, Sanitizer} from '@angular/core';
 import { Game } from '../models/game';
 import { ActivatedRoute, Router, ParamMap, Navigation } from '@angular/router';
 import { Location } from '@angular/common';
@@ -7,6 +7,7 @@ import { DatashareService } from '../service/datashare.service';
 import { MyGamesComponent } from '../my-games/my-games.component';
 import { IgdbCallService } from '../service/igdb-call.service';
 import { GameDeets } from '../models/game-deets';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-gamedetail',
@@ -20,13 +21,17 @@ export class GamedetailComponent implements OnInit {
   gameApi: any;
   gameInfo?: GameDeets;
   show: boolean = false;
+  videoEmbed: any = "https://www.youtube.com/embed";
   
   constructor(private router: Router,
               private gameService: UserGamesService,
               private location: Location,
               private route: ActivatedRoute,
+              private sanitizer: DomSanitizer,
               private apiService: IgdbCallService) { 
+                this.videoEmbed = sanitizer.bypassSecurityTrustUrl(this.videoEmbed);
                 }
+                
               
 
   ngOnInit(): void {
@@ -46,10 +51,8 @@ export class GamedetailComponent implements OnInit {
       });
   }
   async getData(){
-    this.gameApi= await this.apiService.findGameApiDeets(this.game.gamename);
+    this.gameApi= await this.apiService.findGameApiDeets(this.game);
     console.log(this.game.gamename)
-    console.log(this.gameApi.name)
-    this.show = true;
   }
 
 }
