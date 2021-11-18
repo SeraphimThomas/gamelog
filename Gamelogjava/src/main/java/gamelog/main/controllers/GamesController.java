@@ -48,10 +48,9 @@ public class GamesController {
 	}
 
 	@CrossOrigin(origins = "http://localhost:4200")
-	@PutMapping(path = "/updateGame/{gameId}", consumes = "application/json", produces = "application/json")
-	public Games updateGame(Games game) {
-		game.updateDate();
-		return null;
+	@PutMapping(path = "/updateGame", consumes = "application/json", produces = "application/json")
+	public Games updateGame(@RequestBody Games game) {
+		return manager.updateGame(game);
 	}
 
 }

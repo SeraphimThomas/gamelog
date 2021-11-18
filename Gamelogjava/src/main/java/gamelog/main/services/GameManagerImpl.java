@@ -41,7 +41,13 @@ public class GameManagerImpl implements GamesManager{
 
 	@Override
 	public Games updateGame(Games game) {
-		return null;
+		int gameDbId = game.getGameid();
+		Games g = dao.findByGameId(gameDbId);
+		g.setGamename(game.getGamename());
+		g.setGamesystem(game.getGamesystem());
+		g.updateDate();
+		g.setPlaytime(game.getPlaytime());
+		return dao.save(g);
 	}
 
 
