@@ -29,10 +29,18 @@ export class UserGamesService {
     return this.http.get<Game[]>(`http://localhost:8080/topgames`)
   }
 
+  addNewGame(game:Game){
+    console.log(game);
+    return this.http.post<Game>('http://localhost:8080/games', game)
+  }
+
   deleteGame(gamedId: Number) {
     return this.http.delete(`http://localhost:8080/games/delete/${gamedId}`)
   }
 
+  updateGame(game: Game){
+    return this.http.put("http://localhost:8080/games/updateGame", game);
+  }
 
 
   // updateGame(): Observable<Game>{

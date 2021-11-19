@@ -1,10 +1,10 @@
-import { JsonpClientBackend } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Game } from '../models/game';
 import { User } from '../models/user';
-import { NewGameService } from '../service/new-game.service';
+import { UserGamesService } from '../service/user-games.service';
+
 
 @Component({
   selector: 'app-add-game',
@@ -20,7 +20,7 @@ export class AddGameComponent implements OnInit {
   userid = JSON.parse(localStorage.getItem('id')|| '{}');
 
   constructor(private readonly fb: FormBuilder,
-    private newGameService: NewGameService, 
+    private gameService: UserGamesService,
     private router:Router) { 
       this.form = this.fb.group({
         gamename: ["",Validators.required],
@@ -39,7 +39,7 @@ export class AddGameComponent implements OnInit {
                     gamesystem: this.form.value.gamesystem,
                     playtime: this.form.value.playtime,
                     user: { userid: Number(localStorage.getItem('id'))}}
-    this.newGameService.addNewGame(game).subscribe({
+    this.gameService.addNewGame(game).subscribe({
       next: ()=>{
         console.log("The game has been added.")
         location.reload();

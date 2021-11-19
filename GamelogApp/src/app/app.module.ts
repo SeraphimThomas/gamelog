@@ -15,6 +15,7 @@ import { TopGamesComponent } from './top-games/top-games.component';
 import { MyGamesComponent } from './my-games/my-games.component';
 import { GamedetailComponent } from './gamedetail/gamedetail.component';
 import { TimePipe } from './time.pipe';
+import { UpdateGameComponent } from './update-game/update-game.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { TimePipe } from './time.pipe';
     AddGameComponent,
     TopGamesComponent,
     MyGamesComponent,
-    GamedetailComponent
+    GamedetailComponent,
+    UpdateGameComponent
   ],
   imports: [
     FormsModule,

@@ -4,6 +4,7 @@ import { Game } from '../models/game';
 import { DatashareService } from '../service/datashare.service';
 import { UserGamesService } from '../service/user-games.service';
 import { Location } from '@angular/common';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -16,10 +17,12 @@ export class MyGamesComponent implements OnInit {
   myGames: Game[] = [];
   userId: number = 0;
   selectedGame: any;
-  confirmDeletion: boolean = false;
+  options: String[] = ["PC", "Nintendo", "Xbox", "Playstation"];
 
   constructor(public userGames:UserGamesService,
-              public router:Router) { }
+              public router:Router,
+              private readonly fb: FormBuilder) {
+               }
 
   ngOnInit(): void {
     this.showUserGames();
@@ -37,15 +40,27 @@ export class MyGamesComponent implements OnInit {
     this.router.navigateByUrl(`/detail/${game.gameid}`)
   }
 
-  deleteDeny(){
-    this.confirmDeletion = false;
+  // deleteDeny(){
+  //   this.confirmDeletion = false;
+  // }
+
+  // confirmation(game: Game){
+  //   this.selectedGame = game;
+  //   this.confirmDeletion=true;
+  //   console.log(this.selectedGame);
+  //   console.log(this.confirmDeletion);
+  // }
+  editGame(game: Game){
+      this.selectedGame = game;
   }
 
-  confirmation(game: Game){
-    this.selectedGame = game;
-    this.confirmDeletion=true;
-    console.log(this.selectedGame);
-    console.log(this.confirmDeletion);
+  updateGame(game: Game){
+    return this.userGames.updateGame(game).subscribe({
+      next: () => {
+        console.log("Game has been updated");
+        location.reload();
+      }
+    })
   }
 
   deleteGame(game: Game): void{
