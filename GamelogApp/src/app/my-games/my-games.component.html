@@ -17,9 +17,8 @@
                 <td>{{game.dateadded | date: 'fullDate'}}</td>
                 <td>{{game.playtime | time}}</td>
                 <i class="fas fa-info-circle" (click)="sendGame(game)"></i>
-                <i class="fas fa-edit" data-toggle="modal" data-target="#exampleModal"
-                (click)="editGame(game)"></i>
-                    <i class=" fas fa-skull" (click)="deleteGame(game)"></i>
+                <i class="fas fa-edit" data-toggle="modal" data-target="#exampleModal" (click)="editGame(game)"></i>
+                <i class=" fas fa-skull" (click)="deleteGame(game)"></i>
             </tr>
         </tbody>
     </table>
