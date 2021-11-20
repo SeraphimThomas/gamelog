@@ -4,7 +4,7 @@ import { Game } from '../models/game';
 import { DatashareService } from '../service/datashare.service';
 import { UserGamesService } from '../service/user-games.service';
 import { Location } from '@angular/common';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 @Component({
@@ -18,6 +18,12 @@ export class MyGamesComponent implements OnInit {
   userId: number = 0;
   selectedGame: any;
   options: String[] = ["PC", "Nintendo", "Xbox", "Playstation"];
+  gameToUpdate: Game = {
+    user: {userid: 0},
+    gamename: "",
+    gamesystem: "",
+    playtime: 0
+  }
 
   constructor(public userGames:UserGamesService,
               public router:Router,
@@ -26,6 +32,9 @@ export class MyGamesComponent implements OnInit {
 
   ngOnInit(): void {
     this.showUserGames();
+  }
+  reload(){
+    location.reload();
   }
 
   showUserGames(): void{
@@ -51,11 +60,11 @@ export class MyGamesComponent implements OnInit {
   //   console.log(this.confirmDeletion);
   // }
   editGame(game: Game){
-      this.selectedGame = game;
+      this.gameToUpdate = game;
   }
 
-  updateGame(game: Game){
-    return this.userGames.updateGame(game).subscribe({
+  updateGame(){
+    return this.userGames.updateGame(this.gameToUpdate).subscribe({
       next: () => {
         console.log("Game has been updated");
         location.reload();

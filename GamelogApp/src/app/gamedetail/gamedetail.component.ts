@@ -50,9 +50,14 @@ export class GamedetailComponent implements OnInit {
         //than do not allow access
       });
   }
+goBack(){
+  this.location.back();
+}
+
   async getData(){
     this.gameApi= await this.apiService.findGameApiDeets(this.game);
     console.log(this.game.gamename)
   }
+
 
 }

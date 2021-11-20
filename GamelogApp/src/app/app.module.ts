@@ -16,6 +16,8 @@ import { MyGamesComponent } from './my-games/my-games.component';
 import { GamedetailComponent } from './gamedetail/gamedetail.component';
 import { TimePipe } from './time.pipe';
 import { UpdateGameComponent } from './update-game/update-game.component';
+import { YouTubePlayerModule} from '@angular/youtube-player';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { UpdateGameComponent } from './update-game/update-game.component';
     ReactiveFormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    RouterModule
+    RouterModule,
+    YouTubePlayerModule,
+    BrowserAnimationsModule
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
