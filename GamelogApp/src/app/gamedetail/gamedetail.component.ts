@@ -6,7 +6,6 @@ import { UserGamesService } from '../service/user-games.service';
 import { DatashareService } from '../service/datashare.service';
 import { MyGamesComponent } from '../my-games/my-games.component';
 import { IgdbCallService } from '../service/igdb-call.service';
-import { GameDeets } from '../models/game-deets';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
@@ -19,18 +18,14 @@ export class GamedetailComponent implements OnInit {
   gameId: any;
   game: any;
   gameApi: any;
-  gameInfo?: GameDeets;
-  show: boolean = false;
-  videoEmbed: any = "https://www.youtube.com/embed";
+
+  gameSelected: any;
   
   constructor(private router: Router,
               private gameService: UserGamesService,
               private location: Location,
               private route: ActivatedRoute,
-              private sanitizer: DomSanitizer,
-              private apiService: IgdbCallService) { 
-                this.videoEmbed = sanitizer.bypassSecurityTrustUrl(this.videoEmbed);
-                }
+              private apiService: IgdbCallService) {}
                 
               
 
@@ -41,6 +36,16 @@ export class GamedetailComponent implements OnInit {
   // ngDoCheck():void{
   //   this.getData();
   // }
+addApiId(id: Number){
+  console.log(id);
+  this.game.apiid = id;
+  this.gameService.updateGame(this.game).subscribe({
+    next: ()=>{
+      console.log("Game has been assigned api ID: " + this.game.apiid);
+      location.reload();
+    }
+  })
+}
 
   loadGameDetails(gameId: number){
     this.gameService.getGame(gameId).subscribe(game =>

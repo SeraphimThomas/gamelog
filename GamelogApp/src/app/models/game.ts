@@ -8,5 +8,5 @@ export interface Game {
     playtime: number;
     dateadded?: Date;
     datechanged?: Date;
-    apiId?: number;
+    apiid?: number;
 }

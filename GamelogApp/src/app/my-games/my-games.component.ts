@@ -1,7 +1,6 @@
 import { Component, NgModule, NgModuleFactoryLoader, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Game } from '../models/game';
-import { DatashareService } from '../service/datashare.service';
 import { UserGamesService } from '../service/user-games.service';
 import { Location } from '@angular/common';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -15,7 +14,7 @@ import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/
 export class MyGamesComponent implements OnInit {
 
   myGames: Game[] = [];
-  userId: number = 0;
+  userId: number = Number (localStorage.getItem('id'));
   selectedGame: any;
   options: String[] = ["PC", "Nintendo", "Xbox", "Playstation"];
   gameToUpdate: Game = {
@@ -32,14 +31,13 @@ export class MyGamesComponent implements OnInit {
 
   ngOnInit(): void {
     this.showUserGames();
-    console.log(localStorage.getItem("id"))
   }
   reload(){
     location.reload();
   }
 
   showUserGames(): void{
-    this.userGames.userGameList(Number(localStorage.getItem('id'))).subscribe(gameList=>{
+    this.userGames.userGameList(this.userId).subscribe(gameList=>{
       this.myGames = gameList;
       this.myGames.sort((a, b) => (a.gamename < b.gamename) ? -1 : 1);
     })

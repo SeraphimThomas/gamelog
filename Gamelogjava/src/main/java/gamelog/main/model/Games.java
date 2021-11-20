@@ -11,17 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Games extends Auditable<String>{
-	
+public class Games extends Auditable<String> {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="gameid")
+	@Column(name = "gameid")
 	private int gameid;
 
 	@ManyToOne
-	@JoinColumn(name="userid")
+	@JoinColumn(name = "userid")
 	private User user;
-	
+
 	@Column
 	private String gamename;
 	@Column
@@ -32,6 +32,8 @@ public class Games extends Auditable<String>{
 	private Date dateadded = new Date();
 	@Column
 	private Date datechanged = new Date();
+	@Column
+	private int apiid;
 
 	public Games() {
 		super();
@@ -45,11 +47,9 @@ public class Games extends Auditable<String>{
 		return gameid;
 	}
 
-
 	public void setGameid(int gameid) {
 		this.gameid = gameid;
 	}
-
 
 	public String getGamename() {
 		return gamename;
@@ -90,7 +90,15 @@ public class Games extends Auditable<String>{
 	public void setDatechanged(Date datechanged) {
 		this.datechanged = datechanged;
 	}
-	
+
+	public int getApiid() {
+		return apiid;
+	}
+
+	public void setApiid(int apiid) {
+		this.apiid = apiid;
+	}
+
 	public void updateDate() {
 		this.datechanged = new Date();
 	}

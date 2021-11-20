@@ -10,9 +10,9 @@
 <br>
 <br>
 <div class="container">
-    <div *ngIf="game.apiId != null; else list">
+    <div *ngIf="game.apiid != 0; else list">
         <div *ngFor="let dbGame of gameApi">
-            <div *ngIf="dbGame.id===game.apiId">
+            <div *ngIf="dbGame.id===game.apiid">
                 <h3>{{dbGame.name}}</h3>
                 <br>
                 <img [src]="dbGame.cover.url.replace('t_thumb', 't_cover_big')" alt="cover">
@@ -29,11 +29,10 @@
     </div>
     <ng-template #list>
         <div *ngFor="let game of gameApi">
-            <div>
-                <p>{{game.name}}</p>
-                <img [src]="game.cover.url.replace('t_thumb', 't_cover_big')" alt="cover">
-
-            </div>
+            <h3>{{game.name}}</h3><p>Game ID: {{game.id}}</p>
+            <img [src]="game.cover.url.replace('t_thumb', 't_cover_big')" alt="cover">
+            <br>
+            <button class="btn-secondary" (click)="addApiId(game.id)">Select this version</button>
         </div>
     </ng-template>
 </div>
