@@ -20,9 +20,9 @@
                 <p>{{dbGame.summary}}</p>
                 <br>
                 <div *ngFor="let video of dbGame.videos">
-                    <a href="https://www.youtube.com/watch?v=JepMpjhkt-4">{{video.name}}</a>
+                    <a href="https://www.youtube.com/watch?v={{video.video_id}}">{{video.name}}</a>
                     <br>
-                    <youtube-player videoId="video.video_id" suggestedQuality="default"></youtube-player>
+                    <!-- <youtube-player videoId="video.video_id" suggestedQuality="default"></youtube-player> -->
                 </div>
             </div>
         </div>

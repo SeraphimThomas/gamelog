@@ -10,15 +10,15 @@ import { Game } from '../models/game';
 export class UserGamesService {
 
   
-  id = Number (localStorage.getItem('id'));
+  // id = Number (localStorage.getItem('id'));
 
   constructor(private http:HttpClient,
               private cookieServ:CookieService) {
                
                }
 
-  userGameList(): Observable<Game[]>{
-    return this.http.get<Game[]>(`http://localhost:8080/games/${this.id}`)
+  userGameList(id: Number): Observable<Game[]>{
+    return this.http.get<Game[]>(`http://localhost:8080/games/${id}`)
   }
 
   getGame(gameid: number): Observable<Game>{

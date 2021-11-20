@@ -32,13 +32,14 @@ export class MyGamesComponent implements OnInit {
 
   ngOnInit(): void {
     this.showUserGames();
+    console.log(localStorage.getItem("id"))
   }
   reload(){
     location.reload();
   }
 
   showUserGames(): void{
-    this.userGames.userGameList().subscribe(gameList=>{
+    this.userGames.userGameList(Number(localStorage.getItem('id'))).subscribe(gameList=>{
       this.myGames = gameList;
       this.myGames.sort((a, b) => (a.gamename < b.gamename) ? -1 : 1);
     })

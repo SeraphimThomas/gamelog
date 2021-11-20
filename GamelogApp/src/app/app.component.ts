@@ -20,6 +20,7 @@ logout(){
   this.cookies.delete('Login');
   localStorage.removeItem("id");
   this.router.navigate(['login']);
+  console.log(localStorage.getItem("id"))
 }
 
 ngOnInit(): void{
