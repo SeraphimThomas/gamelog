@@ -22,7 +22,7 @@
                 <div *ngFor="let video of dbGame.videos">
                     <a href="https://www.youtube.com/watch?v={{video.video_id}}">{{video.name}}</a>
                     <br>
-                    <!-- <youtube-player videoId="video.video_id" suggestedQuality="default"></youtube-player> -->
+                    <div (onLoad)="playVideo(video.video_id)"></div>
                 </div>
             </div>
         </div>

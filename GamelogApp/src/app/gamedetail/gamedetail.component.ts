@@ -1,12 +1,12 @@
-import { Component, Input, OnInit, Sanitizer} from '@angular/core';
+import { Component, Input, NgZone, OnInit, Sanitizer} from '@angular/core';
 import { Game } from '../models/game';
 import { ActivatedRoute, Router, ParamMap, Navigation } from '@angular/router';
 import { Location } from '@angular/common';
 import { UserGamesService } from '../service/user-games.service';
-import { DatashareService } from '../service/datashare.service';
 import { MyGamesComponent } from '../my-games/my-games.component';
 import { IgdbCallService } from '../service/igdb-call.service';
-import { DomSanitizer } from '@angular/platform-browser';
+
+
 
 @Component({
   selector: 'app-gamedetail',
@@ -18,8 +18,8 @@ export class GamedetailComponent implements OnInit {
   gameId: any;
   game: any;
   gameApi: any;
-
   gameSelected: any;
+
   
   constructor(private router: Router,
               private gameService: UserGamesService,
@@ -46,6 +46,9 @@ addApiId(id: Number){
     }
   })
 }
+loadVideo(){
+  
+}
 
   loadGameDetails(gameId: number){
     this.gameService.getGame(gameId).subscribe(game =>
@@ -58,6 +61,7 @@ addApiId(id: Number){
 goBack(){
   this.location.back();
 }
+
 
   async getData(){
     this.gameApi= await this.apiService.findGameApiDeets(this.game);
