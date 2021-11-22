@@ -71,11 +71,14 @@ export class MyGamesComponent implements OnInit {
     })
   }
 
-  deleteGame(game: Game): void{
+  confirmDelete(game: Game){
     this.selectedGame = game;
+  }
+
+  deleteGame(): void{
     this.userGames.deleteGame(this.selectedGame.gameid).subscribe({
       next: ()=>{
-        console.log("The game " + game.gamename + " was deleted.");
+        console.log("The game " + this.selectedGame.gamename + " was deleted.");
         location.reload();
       }
     })

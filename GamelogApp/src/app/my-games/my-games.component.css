@@ -12,3 +12,7 @@ h1.container{
     background-color: rgb(128, 127, 127);
     border-radius: 10ch;
 }
+tr > i{
+    background-color: white;
+    height: fit-content;
+}

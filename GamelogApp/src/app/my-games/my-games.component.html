@@ -19,7 +19,8 @@
                 <i class="fas fa-info-circle" (click)="sendGame(game)"></i>
                 <i class="fas fa-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
                     (click)="editGame(game)"></i>
-                <i class="fas fa-skull" (click)="deleteGame(game)"></i>
+                <i class="fas fa-skull" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                    (click)="confirmDelete(game)"></i>
             </tr>
         </tbody>
     </table>
@@ -43,15 +44,13 @@
                     <div class="container">
                         <div>
                             <label for="gamename">Game name</label>
-                            <input id="gamename" #gamename [(ngModel)]="gameToUpdate.gamename" name="gamename"
-                                type="text">
+                            <input id="gamename" [(ngModel)]="gameToUpdate.gamename" name="gamename" type="text">
                             <br>
                             <label for="playtime">Playtime</label>
-                            <input id="playtime" type="number" [(ngModel)]="gameToUpdate.playtime" name="playtime"
-                                #playtime>
+                            <input id="playtime" type="number" [(ngModel)]="gameToUpdate.playtime" name="playtime">
                             <br>
                             <label>Game System</label>
-                            <select #gamesystem [(ngModel)]="gameToUpdate.gamesystem" name ="gamesystem">
+                            <select [(ngModel)]="gameToUpdate.gamesystem" name="gamesystem">
                                 <option value="">Select System</option>
                                 <option *ngFor="let option of options">{{option}}</option>
                             </select>
@@ -59,6 +58,24 @@
                     </div>
                     <button type="submit" class="btn btn-secondary btn-lg">Update Game</button>
                 </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="reload()">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <button (click)="deleteGame()" class="btn btn-danger btn-lg">DELETE IT</button>
+                </div>
             </div>
         </div>
     </div>
