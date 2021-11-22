@@ -32,6 +32,9 @@ export class GamedetailComponent implements OnInit {
   ngOnInit(): void {
     this.gameId = this.route.snapshot.params['gameid'];
     this.loadGameDetails(this.gameId);
+      this.gameApi = this.apiService.findGameApiDeets(this.game);
+      console.log(this.game.gamename)
+
   }
   // ngDoCheck():void{
   //   this.getData();
@@ -63,10 +66,7 @@ goBack(){
 }
 
 
-  async getData(){
-    this.gameApi= await this.apiService.findGameApiDeets(this.game);
-    console.log(this.game.gamename)
-  }
+
 
 
 }
