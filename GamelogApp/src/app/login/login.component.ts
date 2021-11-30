@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 import { User } from '../models/user';
 import { LoginService } from '../service/login.service';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { FormControl } from '@angular/forms';
+import { animate } from "motion";
+
 
 @Component({
   selector: 'app-login',
@@ -20,6 +22,8 @@ export class LoginComponent implements OnInit {
   password = "";
   username = "";
   fieldTextType: boolean = false;
+  animation = animate('header',{x: [0, 500, 0]})
+  
 
   constructor(private readonly fb: FormBuilder, 
     private loginService:LoginService, 
@@ -32,6 +36,11 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit(): void {
   }
+
+  makeMotion(){
+    this.animation.play
+  }
+ 
 
 onSubmit():void{
   this.incorrect=false;

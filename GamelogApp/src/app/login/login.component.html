@@ -1,33 +1,37 @@
+<div #header>
+    <h1>Login Here!</h1>
+</div>
+<button (click)="makeMotion()">MOVE IT!</button>
+
 <div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <label for="username" class="form-label mt-4">Username:</label>
         <br>
-        <input type="text" [formControlName]="'username'"/>
+        <input type="text" [formControlName]="'username'" />
         <br>
         <label for="password">Password:</label>
         <br>
-    <div class="input-group">
-        <input [type]="fieldTextType ? 'text' : 'password'" [formControlName]="'password'"/>
-        <div class="input-group-prepend">
-            <span class="input-group-text">
-                <i class="fa" [ngClass]="{
+        <div class="input-group">
+            <input [type]="fieldTextType ? 'text' : 'password'" [formControlName]="'password'" />
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="fa" [ngClass]="{
                     'fa-eye-slash': !fieldTextType,
                     'fa-eye': fieldTextType
-                    }"
-                    (click)="toggleFieldTextType()">
-                </i>
-            </span>
+                    }" (click)="toggleFieldTextType()">
+                    </i>
+                </span>
+            </div>
         </div>
-    </div>
-<br>
-<button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
+        <br>
+        <button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
         <!--Can work if signup component is created-->
-        <!--<a href="/signup">Create a new account</a>-->   
+        <!--<a href="/signup">Create a new account</a>-->
     </form>
     <div *ngIf="incorrect===true">
         <div class="alert alert-dismissible alert-danger">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            <strong>Oh no!</strong> Something went wrong.  Try again!
+            <strong>Oh no!</strong> Something went wrong. Try again!
         </div>
 
     </div>
