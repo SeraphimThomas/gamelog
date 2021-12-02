@@ -48,6 +48,7 @@ public class GameManagerImpl implements GamesManager{
 		g.updateDate();
 		g.setPlaytime(game.getPlaytime());
 		g.setApiid(game.getApiid());
+		g.setCompletion(game.getCompletion());
 		return dao.save(g);
 	}
 

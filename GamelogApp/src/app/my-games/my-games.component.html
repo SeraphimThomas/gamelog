@@ -8,6 +8,7 @@
                 <th scope="col">System</th>
                 <th scope="col">Date Added</th>
                 <th scope="col">Play Time</th>
+                <th scope="col">Completion Status</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,7 @@
                 <td>{{game.gamesystem}}</td>
                 <td>{{game.dateadded | date: 'fullDate'}}</td>
                 <td>{{game.playtime | time}}</td>
+                <td>{{game.completion | uppercase}}</td>
                 <i class="fas fa-info-circle" (click)="sendGame(game)"></i>
                 <i class="fas fa-edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
                     (click)="editGame(game)"></i>
@@ -52,7 +54,12 @@
                             <label>Game System</label>
                             <select [(ngModel)]="gameToUpdate.gamesystem" name="gamesystem">
                                 <option value="">Select System</option>
-                                <option *ngFor="let option of options">{{option}}</option>
+                                <option *ngFor="let system of systems">{{system}}</option>
+                            </select>
+                            <br>
+                            <label>Completion Status</label>
+                            <select [(ngModel)]="gameToUpdate.completion" name="completion">
+                                <option *ngFor="let status of completeStatus">{{status}}</option>
                             </select>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 <div class="container">
     <form [formGroup]="form" (ngSubmit)="addNewGame()">
         <label>Game Name</label>
-        <input type="text" [formControlName]="'gamename'"/>
+        <input type="text" [formControlName]="'gamename'" />
         <br>
         <label>Game System</label>
         <select [formControlName]="'gamesystem'">
@@ -10,8 +10,14 @@
         </select>
         <br>
         <label>Play Time (Please enter as decimal)</label>
-        <input type="number" [formControlName]="'playtime'"/>
+        <input type="number" [formControlName]="'playtime'" />
+        <br>
+        <label>Completion Status</label>
+        <select [formControlName]="'completion'">
+            <option *ngFor="let status of completeStatus">{{status}}</option>
+        </select>
         <br>
         <button type="submit" class="btn btn-secondary btn-lg">Add Game</button>
+
     </form>
 </div>

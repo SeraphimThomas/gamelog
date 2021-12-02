@@ -17,6 +17,7 @@ export class AddGameComponent implements OnInit {
   form: FormGroup
   user: User = {}
   options: String[] = ["PC", "Nintendo", "Xbox", "Playstation"]
+  completeStatus: String[] = ["Unplayed", "Completed", "Playing", "Beaten"];
   userid = JSON.parse(localStorage.getItem('id')|| '{}');
 
   constructor(private readonly fb: FormBuilder,

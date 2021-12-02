@@ -11,6 +11,8 @@ CREATE TABLE gamedb.games (
 	dateadded date NULL,
 	datechanged date NULL,
 	apiid int2 NULL DEFAULT 0,
+	completion varchar(20) NULL,
+	CONSTRAINT "Check_Completion" CHECK ((((completion)::text = 'completed'::text) OR ((completion)::text = 'beaten'::text) OR ((completion)::text = 'unplayed'::text) OR ((completion)::text = 'playing'::text))),
 	CONSTRAINT games_pk PRIMARY KEY (gameid),
 	CONSTRAINT fk_userid FOREIGN KEY (userid) REFERENCES gamedb."user"(userid)
 );

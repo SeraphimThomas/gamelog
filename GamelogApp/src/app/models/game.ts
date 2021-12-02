@@ -9,4 +9,5 @@ export interface Game {
     dateadded?: Date;
     datechanged?: Date;
     apiid?: number;
+    completion?: string;
 }

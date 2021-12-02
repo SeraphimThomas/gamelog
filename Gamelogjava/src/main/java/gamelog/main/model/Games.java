@@ -27,6 +27,8 @@ public class Games extends Auditable<String> {
 	@Column
 	private String gamesystem;
 	@Column
+	private String completion;
+	@Column
 	private double playtime;
 	@Column
 	private Date dateadded = new Date();
@@ -65,6 +67,14 @@ public class Games extends Auditable<String> {
 
 	public void setGamesystem(String gamesystem) {
 		this.gamesystem = gamesystem;
+	}
+
+	public String getCompletion() {
+		return completion;
+	}
+
+	public void setCompletion(String completion) {
+		this.completion = completion;
 	}
 
 	public double getPlaytime() {

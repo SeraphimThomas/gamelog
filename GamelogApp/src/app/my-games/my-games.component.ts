@@ -5,7 +5,6 @@ import { UserGamesService } from '../service/user-games.service';
 import { Location } from '@angular/common';
 import { Form, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-my-games',
   templateUrl: './my-games.component.html',
@@ -16,12 +15,14 @@ export class MyGamesComponent implements OnInit {
   myGames: Game[] = [];
   userId: number = Number (localStorage.getItem('id'));
   selectedGame: any;
-  options: String[] = ["PC", "Nintendo", "Xbox", "Playstation"];
+  systems: String[] = ["PC", "Nintendo", "Xbox", "Playstation"];
+  completeStatus: String[] = ["Unplayed", "Completed", "Playing", "Beaten"];
   gameToUpdate: Game = {
     user: {userid: 0},
     gamename: "",
     gamesystem: "",
-    playtime: 0
+    playtime: 0,
+    completion: ""
   }
 
   constructor(public userGames:UserGamesService,
