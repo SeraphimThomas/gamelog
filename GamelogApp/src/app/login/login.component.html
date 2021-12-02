@@ -1,7 +1,6 @@
 <div #header>
     <h1>Login Here!</h1>
 </div>
-<button (click)="makeMotion()">MOVE IT!</button>
 
 <div class="container">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -12,6 +11,7 @@
         <label for="password">Password:</label>
         <br>
         <div class="input-group">
+            <!--Allow for text input, as well as implementing a "show password" function throug the icon-->
             <input [type]="fieldTextType ? 'text' : 'password'" [formControlName]="'password'" />
             <div class="input-group-prepend">
                 <span class="input-group-text">
@@ -25,9 +25,8 @@
         </div>
         <br>
         <button type="submit" class="btn btn-secondary btn-lg">Sign In</button>
-        <!--Can work if signup component is created-->
-        <!--<a href="/signup">Create a new account</a>-->
     </form>
+    <!--Error popup if incorrect login-->
     <div *ngIf="incorrect===true">
         <div class="alert alert-dismissible alert-danger">
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>

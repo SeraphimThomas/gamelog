@@ -23,10 +23,12 @@ export class AddGameComponent implements OnInit {
   constructor(private readonly fb: FormBuilder,
     private gameService: UserGamesService,
     private router:Router) { 
+      //creating the FormBuilder and setting it's default values as well as the requirements
       this.form = this.fb.group({
         gamename: ["",Validators.required],
         gamesystem: ["",Validators.required],
         playtime: ["",Validators.required],
+        completion: [""],
         userid: 0
       });
     }
@@ -36,13 +38,16 @@ export class AddGameComponent implements OnInit {
 
   addNewGame():void{
     console.log("New Game: " + this.form.getRawValue);
+    //calls the UserGamesService to take the data from the form and pass it to the backend
     let game:Game = {gamename: this.form.value.gamename,
                     gamesystem: this.form.value.gamesystem,
                     playtime: this.form.value.playtime,
+                    completion: this.form.value.completion,
                     user: { userid: Number(localStorage.getItem('id'))}}
     this.gameService.addNewGame(game).subscribe({
       next: ()=>{
         console.log("The game has been added.")
+        //reload the page, allowing for the newly added game to populate into the table
         location.reload();
         }
       }

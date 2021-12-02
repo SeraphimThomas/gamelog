@@ -30,14 +30,18 @@ export class GamedetailComponent implements OnInit {
 
 
   ngOnInit(): void {
+    //takes the gameId, calls the backend to retrieve just that game and pull all the details from it
     this.gameId = this.route.snapshot.params['gameid'];
     this.loadGameDetails(this.gameId);
+    //Calls the IgdbCallService to get the details of the game from the API database
     this.getData();
   }
   // ngDoCheck():void{
   //   this.getData();
   // }
   addApiId(id: Number) {
+    //Allows the user to connect their game to the correct game from the IGDB database.  This ID is then stored with the other data
+    //so that it will always show the correct game upon selecting it for details
     this.game.apiid = id;
     this.gameService.updateGame(this.game).subscribe({
       next: () => {
@@ -47,16 +51,19 @@ export class GamedetailComponent implements OnInit {
     })
   }
 
+  //async call to the service for more details from the API
   async getData() {
     this.gameApi = await this.apiService.findGameApiDeets(this.game);
     console.log(this.game.gamename)
   }
 
   loadGameDetails(gameId: number) {
+    //call to the database for the details stored there.
     this.gameService.getGame(gameId).subscribe(game => {
       this.game = game;
     });
   }
+  //Simple go back button using the Location class
   goBack() {
     this.location.back();
   }

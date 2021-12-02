@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
   loginCred = new FormControl('');
   incorrect:boolean = false;
   form: FormGroup
-  private cookie_name = "";
   password = "";
   username = "";
   fieldTextType: boolean = false;
@@ -37,11 +36,13 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  makeMotion(){
-    this.animation.play
-  }
+  // makeMotion(){
+  //   this.animation.play
+  // }
  
-
+/*
+Simple submit function calling the service and passing it the data from the form
+*/
 onSubmit():void{
   this.incorrect=false;
   console.log("The username is: " + this.form.getRawValue);
@@ -52,14 +53,17 @@ onSubmit():void{
       if(data === null){
         this.incorrect=true;
       }else{
+        //stores the ID number of the user for furture use
         localStorage.setItem('id', String(data.userid));
+        //stores the login name as a cookie that's only there for a time.
         this.cookie.set('Login', String(data.username), 0.25);
+        //navigate to home page on successful login
         this.router.navigate(['home']);
       }
     }
   })
 }
-
+//Function to toggle the field type of the password input (show-hide password function)
 toggleFieldTextType(){
   this.fieldTextType = !this.fieldTextType;
 }

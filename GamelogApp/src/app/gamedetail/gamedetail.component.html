@@ -1,3 +1,4 @@
+<!--This page shows the details of a game selected from the My Games page-->
 <div *ngIf="game" class="container">
     <button class="btn- btn-warning" (click)="goBack()">Go back</button>
     <h2>{{game.gamename}} Stats</h2>
@@ -9,12 +10,17 @@
 </div>
 <br>
 <br>
+<!--The following is a container for the details got from the IGDB database.  The ngIf checks if the game selected has an ID from
+the IGDB stored with it.  If it doesn't, it shows the list of games with a similar title to allow the user to pick the right game.
+If it does have an API ID in it, then it will filter out all the games it retrieves that don't share that ID, and only shows the
+one the user selected previously.-->
 <div class="container">
     <div *ngIf="game.apiid != 0; else list">
         <div *ngFor="let dbGame of gameApi">
             <div *ngIf="dbGame.id===game.apiid">
                 <h3>{{dbGame.name}}</h3>
                 <br>
+                <!--This changes the cover art URL so that it gets a bigger version of it-->
                 <img [src]="dbGame.cover.url.replace('t_thumb', 't_cover_big')" alt="cover">
                 <br>
                 <p>{{dbGame.summary}}</p>
@@ -22,7 +28,6 @@
                 <div *ngFor="let video of dbGame.videos">
                     <a href="https://www.youtube.com/watch?v={{video.video_id}}">{{video.name}}</a>
                     <br>
-                    <!-- <div (onLoad)="playVideo(video.video_id)"></div> -->
                 </div>
             </div>
         </div>

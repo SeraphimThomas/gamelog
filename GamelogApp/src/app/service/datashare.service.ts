@@ -6,6 +6,7 @@ import { Game } from '../models/game';
   providedIn: 'root'
 })
 export class DatashareService {
+  //service for passing data.  Maybe subject to deletion from lack of use
 
   private passedGame?: Game;
 

@@ -1,4 +1,5 @@
 <div class="container">
+    <!--Form for the adding of a new game-->
     <form [formGroup]="form" (ngSubmit)="addNewGame()">
         <label>Game Name</label>
         <input type="text" [formControlName]="'gamename'" />

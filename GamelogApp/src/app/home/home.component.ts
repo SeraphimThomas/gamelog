@@ -14,4 +14,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //Basic home page.  Will add more later
+
 }

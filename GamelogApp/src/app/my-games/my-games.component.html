@@ -14,7 +14,14 @@
         <tbody>
             <tr *ngFor="let game of myGames" class="table-success">
                 <td>{{game.gamename}}</td>
-                <td>{{game.gamesystem}}</td>
+                <td>{{game.gamesystem}}
+                    <i class="fa" [ngClass]="{
+                        'fab fa-xbox': game.gamesystem == 'Xbox',
+                        'fab fa-playstation': game.gamesystem == 'Playstation',
+                        'fas fa-gamepad': game.gamesystem == 'Nintendo',
+                        'fas fa-laptop':  game.gamesystem == 'PC'
+                    }"></i>
+                </td>
                 <td>{{game.dateadded | date: 'fullDate'}}</td>
                 <td>{{game.playtime | time}}</td>
                 <td>{{game.completion | uppercase}}</td>
