@@ -21,6 +21,7 @@
                         'fas fa-gamepad': game.gamesystem == 'Nintendo',
                         'fas fa-laptop':  game.gamesystem == 'PC'
                     }"></i>
+                    <!--Allows the correct icon to apperar based on game system selected-->
                 </td>
                 <td>{{game.dateadded | date: 'fullDate'}}</td>
                 <td>{{game.playtime | time}}</td>

@@ -14,7 +14,7 @@ export class MyGamesComponent implements OnInit {
 
   myGames: Game[] = [];
   userId: number = Number (localStorage.getItem('id'));
-  selectedGame: any;
+  gameToDelete: any;
   systems: String[] = ["PC", "Nintendo", "Xbox", "Playstation"];
   completeStatus: String[] = ["Unplayed", "Completed", "Playing", "Beaten"];
   gameToUpdate: Game = {
@@ -45,7 +45,6 @@ export class MyGamesComponent implements OnInit {
   }
 
   sendGame(game: Game) : void{
-    this.selectedGame = game;
     this.router.navigateByUrl(`/detail/${game.gameid}`)
   }
 
@@ -73,13 +72,13 @@ export class MyGamesComponent implements OnInit {
   }
 
   confirmDelete(game: Game){
-    this.selectedGame = game;
+    this.gameToDelete = game;
   }
 
   deleteGame(): void{
-    this.userGames.deleteGame(this.selectedGame.gameid).subscribe({
+    this.userGames.deleteGame(this.gameToDelete.gameid).subscribe({
       next: ()=>{
-        console.log("The game " + this.selectedGame.gamename + " was deleted.");
+        console.log("The game " + this.gameToDelete.gamename + " was deleted.");
         location.reload();
       }
     })
