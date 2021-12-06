@@ -45,7 +45,6 @@ public class GameManagerImpl implements GamesManager{
 		Games g = dao.findByGameId(gameDbId);
 		g.setGamename(game.getGamename());
 		g.setGamesystem(game.getGamesystem());
-		g.updateDate();
 		g.setPlaytime(game.getPlaytime());
 		g.setApiid(game.getApiid());
 		g.setCompletion(game.getCompletion());

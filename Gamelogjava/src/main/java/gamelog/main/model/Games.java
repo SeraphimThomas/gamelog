@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
 @Entity
 public class Games extends Auditable<String> {
 
@@ -30,8 +33,10 @@ public class Games extends Auditable<String> {
 	private String completion;
 	@Column
 	private double playtime;
+	@CreatedDate
 	@Column
 	private Date dateadded = new Date();
+	@LastModifiedDate
 	@Column
 	private Date datechanged = new Date();
 	@Column
@@ -109,8 +114,8 @@ public class Games extends Auditable<String> {
 		this.apiid = apiid;
 	}
 
-	public void updateDate() {
-		this.datechanged = new Date();
-	}
+//	public void updateDate() {
+//		this.datechanged = new Date();
+//	}
 
 }
