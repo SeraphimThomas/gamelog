@@ -1,15 +1,12 @@
-<div #header>
+<div style="text-align: center;">
     <h1>Login Here!</h1>
 </div>
 
-<div class="container">
+<div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <label for="username" class="form-label mt-4">Username:</label>
-        <br>
         <input type="text" [formControlName]="'username'" />
-        <br>
         <label for="password">Password:</label>
-        <br>
         <div class="input-group">
             <!--Allow for text input, as well as implementing a "show password" function throug the icon-->
             <input [type]="fieldTextType ? 'text' : 'password'" [formControlName]="'password'" />
