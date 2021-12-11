@@ -8,5 +8,16 @@
     clear: both;
 }
 body{
-    background-color: teal;
+    --text-color: black;
+    --bkg-color: white;
+}
+body.dark{
+    --text-color: white;
+    --bkg-color: black;
+}
+body{
+    background: var(--bkg-color);
+}
+h1,p,h2,h3, label, em{
+    color: var(--text-color);
 }
